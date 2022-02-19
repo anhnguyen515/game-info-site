@@ -1,12 +1,14 @@
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
+import GameList from "./components/GameList";
+import Layout from "./components/Layout/Layout";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Hero />
-      <main>Main content</main>
+      <Layout>
+        <h2>New and trending</h2>
+        <p>Based on player count and release date</p>
+        <GameList />
+      </Layout>
     </div>
   );
 }
