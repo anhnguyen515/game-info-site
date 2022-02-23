@@ -1,1 +1,1 @@
-# UI for Gaming Info Site based on FreeToGame
+# UI for Gaming Info Site based on RAWG
