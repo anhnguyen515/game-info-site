@@ -5,7 +5,15 @@ import { BsPlus } from "react-icons/bs";
 export default function GameCard({ img, platforms, name, added }) {
   return (
     <Card>
-      <Card.Img variant="top" src={img} height="150px" />
+      <Card.Img
+        variant="top"
+        src={img}
+        style={{
+          height: "50vw",
+          maxHeight: "200px",
+          objectFit: "cover",
+        }}
+      />
       <Card.Body>
         <Card.Text>
           {platforms.map((item) => item.platform.name).join(" | ")}

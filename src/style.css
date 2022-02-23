@@ -87,6 +87,10 @@ a:hover {
   width: auto;
 }
 
+.sidebar--offcanvas_nav {
+  padding: 10px 20px;
+}
+
 .sidebar--nav > * {
   padding: 10px 0;
 }

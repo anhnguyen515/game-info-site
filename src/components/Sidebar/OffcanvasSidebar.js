@@ -8,7 +8,7 @@ export default function OffcanvasSidebar() {
       <Navbar.Toggle aria-controls="toggle-sidebar" />
       <Navbar.Offcanvas id="toggle-sidebar" className="sidebar--offcanvas">
         <Offcanvas.Body>
-          <Nav className="flex-column sidebar--nav">
+          <Nav className="flex-column sidebar--nav sidebar--offcanvas_nav">
             <Nav.Item>
               <Link to="/">Home</Link>
             </Nav.Item>
