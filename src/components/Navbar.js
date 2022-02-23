@@ -8,7 +8,7 @@ export default function MyNavbar() {
   return (
     <>
       <Navbar variant="dark" expand="lg">
-        <Navbar.Brand href="/">
+        <Navbar.Brand>
           <Link to="/">RAWG</Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

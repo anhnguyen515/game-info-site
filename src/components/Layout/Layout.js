@@ -1,26 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import MyNavbar from "../Navbar";
-import Sidebar from "../Sidebar";
+import OffcanvasSidebar from "../Sidebar/OffcanvasSidebar";
+import Sidebar from "../Sidebar/Sidebar";
 
 export default function Layout({ children }) {
-  const colProps = {
-    sidebar: {
-      xs: 2,
-    },
-    mainContent: {
-      xs: 10,
-    },
-  };
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 992;
+
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <MyNavbar />
-      <Container fluid>
+      <Container fluid style={{ padding: "10px 40px" }}>
         <Row>
-          <Col {...colProps.sidebar}>
-            <Sidebar />
+          <Col sm="auto">
+            {width >= breakpoint ? <Sidebar /> : <OffcanvasSidebar />}
           </Col>
-          <Col {...colProps.mainContent}>
+          <Col
+            style={{
+              padding: "10px 20px",
+            }}
+          >
             <main>{children}</main>
           </Col>
         </Row>

@@ -1,20 +1,19 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
+import { BsPlus } from "react-icons/bs";
 
-export default function GameCard() {
+export default function GameCard({ img, platforms, name, added }) {
   return (
-    <Card bg="dark">
-      <Card.Img
-        variant="top"
-        src="https://via.placeholder.com/150"
-        height="150px"
-      />
+    <Card>
+      <Card.Img variant="top" src={img} height="150px" />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          {platforms.map((item) => item.platform.name).join(" | ")}
         </Card.Text>
+        <Card.Title>{name}</Card.Title>
+        <Button className="card--btn">
+          <BsPlus /> {added}
+        </Button>
       </Card.Body>
     </Card>
   );
