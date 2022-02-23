@@ -24,12 +24,12 @@ export default function Layout({ children }) {
       <MyNavbar />
       <Container fluid style={{ padding: "10px 40px" }}>
         <Row>
-          <Col sm="auto">
+          <Col xs={12} md="auto">
             {width >= breakpoint ? <Sidebar /> : <OffcanvasSidebar />}
           </Col>
           <Col
             style={{
-              padding: "10px 20px",
+              marginTop: "20px",
             }}
           >
             <main>{children}</main>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function OffcanvasSidebar() {
   return (
-    <Navbar variant="dark" expand={false} className="sidebar">
+    <Navbar variant="dark" expand={false}>
       <Navbar.Toggle aria-controls="toggle-sidebar" />
       <Navbar.Offcanvas id="toggle-sidebar" className="sidebar--offcanvas">
         <Offcanvas.Body>

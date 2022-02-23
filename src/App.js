@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <Layout>
-        <h2>New and trending</h2>
+        <h1 style={{ fontSize: "72px" }}>New and trending</h1>
         <p>Based on player count and release date</p>
         {games && <GameList games={games} />}
       </Layout>

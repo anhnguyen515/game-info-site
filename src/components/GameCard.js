@@ -9,6 +9,7 @@ export default function GameCard({ img, platforms, name, added }) {
         variant="top"
         src={img}
         style={{
+          borderRadius: "10px 10px 0 0",
           height: "50vw",
           maxHeight: "200px",
           objectFit: "cover",
