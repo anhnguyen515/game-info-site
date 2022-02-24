@@ -117,16 +117,33 @@ a:hover {
 }
 
 .card-text {
-  line-height: 20px;
-  height: 60px;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card--platforms > span {
+  margin-right: 6px;
+}
+
+.card--metacritic {
+  border: 1px solid;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 0px 7px;
 }
 
 .card--btn {
   display: flex;
   align-items: center;
-  gap: 2px;
+  justify-content: space-between;
   background-color: #ffffff1a;
   border: none;
   font-size: 12px;
+  transition: 0.1s;
+}
+
+.card--btn:hover {
+  background-color: #ffffff;
+  color: #151515;
 }

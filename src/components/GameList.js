@@ -13,6 +13,7 @@ export default function GameList({ games }) {
               platforms={game.parent_platforms}
               name={game.name}
               added={game.added}
+              metacritic={game.metacritic}
             />
           </Col>
         ))}
