@@ -1,33 +1,49 @@
-import GameList from "./components/GameList";
-import Layout from "./components/Layout/Layout";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import MyNavbar from "./components/Navbar";
+import OffcanvasSidebar from "./components/Sidebar/OffcanvasSidebar";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Home from "./Home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import GameDetails from "./GameDetails";
 
-function App() {
-  const [games, setGames] = useState();
+export default function App() {
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 992;
 
-  function getGames() {
-    axios
-      .get(
-        `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}`
-      )
-      .then((res) => {
-        const data = res.data;
-        setGames(data);
-      })
-      .catch((err) => console.log(err));
-  }
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
 
-  useEffect(() => getGames(), []);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
-    <div className="App">
-      <Layout>
-        <h1 style={{ fontSize: "72px" }}>All games</h1>
-        {games && <GameList games={games} />}
-      </Layout>
-    </div>
+    <>
+      <Router>
+        <MyNavbar />
+        <Container fluid style={{ padding: "10px 40px" }}>
+          <Row>
+            <Col xs={12} md="auto">
+              {width >= breakpoint ? <Sidebar /> : <OffcanvasSidebar />}
+            </Col>
+            <Col
+              style={{
+                marginTop: "20px",
+              }}
+            >
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/games/:id" element={<GameDetails />} />
+              </Routes>
+            </Col>
+          </Row>
+        </Container>
+      </Router>
+    </>
   );
 }
-
-export default App;

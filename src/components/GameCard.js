@@ -12,8 +12,16 @@ import {
 import { SiNintendo, SiAtari } from "react-icons/si";
 import { GoBrowser } from "react-icons/go";
 import { MdComputer } from "react-icons/md";
+import { Link } from "react-router-dom";
 
-export default function GameCard({ img, platforms, name, added, metacritic }) {
+export default function GameCard({
+  id,
+  img,
+  platforms,
+  name,
+  added,
+  metacritic,
+}) {
   const metaStyle =
     metacritic < 50
       ? {
@@ -68,33 +76,35 @@ export default function GameCard({ img, platforms, name, added, metacritic }) {
   }
 
   return (
-    <Card>
-      <Card.Img
-        variant="top"
-        src={img}
-        style={{
-          borderRadius: "10px 10px 0 0",
-          height: "50vw",
-          maxHeight: "200px",
-          objectFit: "cover",
-        }}
-      />
-      <Card.Body>
-        <Card.Text>
-          <span className="card--platforms">
-            {platforms.map((item, index) => (
-              <span key={index}>{getPlatform(item.platform.name)}</span>
-            ))}
-          </span>
-          <span className="card--metacritic" style={metaStyle}>
-            {metacritic}
-          </span>
-        </Card.Text>
-        <Card.Title>{name}</Card.Title>
-        <Button className="card--btn">
-          <ImPlus style={{ marginRight: "5px" }} /> {added}
-        </Button>
-      </Card.Body>
-    </Card>
+    <Link to={`/games/${id}`}>
+      <Card>
+        <Card.Img
+          variant="top"
+          src={img}
+          style={{
+            borderRadius: "10px 10px 0 0",
+            height: "50vw",
+            maxHeight: "200px",
+            objectFit: "cover",
+          }}
+        />
+        <Card.Body>
+          <Card.Text>
+            <span className="card--platforms">
+              {platforms.map((item, index) => (
+                <span key={index}>{getPlatform(item.platform.name)}</span>
+              ))}
+            </span>
+            <span className="card--metacritic" style={metaStyle}>
+              {metacritic}
+            </span>
+          </Card.Text>
+          <Card.Title>{name}</Card.Title>
+          <Button className="card--btn">
+            <ImPlus style={{ marginRight: "5px" }} /> {added}
+          </Button>
+        </Card.Body>
+      </Card>
+    </Link>
   );
 }

@@ -6,9 +6,10 @@ export default function GameList({ games }) {
   return (
     <div>
       <Row xs={1} sm={2} lg={3} xl={4}>
-        {games.results.map((game, index) => (
-          <Col key={index} style={{ padding: "10px" }}>
+        {games.results.map((game) => (
+          <Col key={game.id} style={{ padding: "10px" }}>
             <GameCard
+              id={game.id}
               img={game.background_image}
               platforms={game.parent_platforms}
               name={game.name}
