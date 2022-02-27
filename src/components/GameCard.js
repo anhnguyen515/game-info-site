@@ -62,10 +62,12 @@ export default function GameCard({
             <span className="card--info-name">Genres:</span>
             {genres.map((genre) => genre.name).join(", ")}
           </p>
-          <p>
-            <span className="card--info-name">ESRB:</span>
-            {esrb_rating.name}
-          </p>
+          {esrb_rating && (
+            <p>
+              <span className="card--info-name">ESRB:</span>
+              {esrb_rating.name}
+            </p>
+          )}
         </div>
       </Card.Body>
     </Card>

@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 export default function OffcanvasSidebar() {
   return (
-    <Navbar variant="dark" expand={false}>
+    <Navbar fixed="bottom" variant="dark" expand={false}>
       <Navbar.Toggle aria-controls="toggle-sidebar" />
-      <Navbar.Offcanvas id="toggle-sidebar" className="sidebar--offcanvas">
+      <Navbar.Offcanvas id="toggle-sidebar" className="offcanvas">
         <Offcanvas.Body>
-          <Nav className="flex-column sidebar--nav sidebar--offcanvas_nav">
+          <Nav className="flex-column sidebar--nav offcanvas-nav">
             <Nav.Item>
               <Link to="/">Home</Link>
             </Nav.Item>

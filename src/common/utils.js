@@ -11,10 +11,14 @@ import { GoBrowser } from "react-icons/go";
 import { MdComputer } from "react-icons/md";
 
 export const metacriticStyle = (metacritic) =>
-  metacritic < 50
+  metacritic === null
     ? {
-        borderColor: "#FF0000",
-        color: "#FF0000",
+        border: "none",
+      }
+    : metacritic >= 75
+    ? {
+        borderColor: "#66CC33",
+        color: "#66CC33",
       }
     : metacritic >= 50 && metacritic < 75
     ? {
@@ -22,8 +26,8 @@ export const metacriticStyle = (metacritic) =>
         color: "#FFCC33",
       }
     : {
-        borderColor: "#66CC33",
-        color: "#66CC33",
+        borderColor: "#FF0000",
+        color: "#FF0000",
       };
 
 export function getPlatformIcon(platform) {
