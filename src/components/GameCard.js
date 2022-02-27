@@ -1,110 +1,73 @@
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { ImPlus } from "react-icons/im";
-import {
-  FaWindows,
-  FaPlaystation,
-  FaXbox,
-  FaApple,
-  FaAndroid,
-  FaLinux,
-} from "react-icons/fa";
-import { SiNintendo, SiAtari } from "react-icons/si";
-import { GoBrowser } from "react-icons/go";
-import { MdComputer } from "react-icons/md";
+import { BsGift, BsThreeDots } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import {
+  DateFormatter,
+  getPlatformIcon,
+  metacriticStyle,
+} from "../common/utils";
 
 export default function GameCard({
   id,
   img,
-  platforms,
   name,
+  platforms,
   added,
   metacritic,
+  released,
+  genres,
+  esrb_rating,
 }) {
-  const metaStyle =
-    metacritic < 50
-      ? {
-          borderColor: "#FF0000",
-          color: "#FF0000",
-        }
-      : metacritic >= 50 && metacritic < 75
-      ? {
-          borderColor: "#FFCC33",
-          color: "#FFCC33",
-        }
-      : {
-          borderColor: "#66CC33",
-          color: "#66CC33",
-        };
-
-  function getPlatform(platform) {
-    switch (platform) {
-      case "PC":
-        return <FaWindows />;
-
-      case "PlayStation":
-        return <FaPlaystation />;
-
-      case "Xbox":
-        return <FaXbox />;
-
-      case "iOS":
-        return <FaApple />;
-
-      case "Apple Macintosh":
-        return <MdComputer />;
-
-      case "Android":
-        return <FaAndroid />;
-
-      case "Linux":
-        return <FaLinux />;
-
-      case "Nintendo":
-        return <SiNintendo />;
-
-      case "Atari":
-        return <SiAtari />;
-
-      case "Web":
-        return <GoBrowser />;
-
-      default:
-        break;
-    }
-  }
-
   return (
-    <Link to={`/games/${id}`}>
-      <Card>
-        <Card.Img
-          variant="top"
-          src={img}
-          style={{
-            borderRadius: "10px 10px 0 0",
-            height: "50vw",
-            maxHeight: "200px",
-            objectFit: "cover",
-          }}
-        />
-        <Card.Body>
-          <Card.Text>
-            <span className="card--platforms">
-              {platforms.map((item, index) => (
-                <span key={index}>{getPlatform(item.platform.name)}</span>
-              ))}
-            </span>
-            <span className="card--metacritic" style={metaStyle}>
-              {metacritic}
-            </span>
-          </Card.Text>
-          <Card.Title>{name}</Card.Title>
-          <Button className="card--btn">
+    <Card>
+      <Card.Img variant="top" src={img} />
+      <Card.Body>
+        <Card.Text>
+          <span className="card--platforms">
+            {platforms.map((item, index) => (
+              <span key={index}>{getPlatformIcon(item.platform.name)}</span>
+            ))}
+          </span>
+          <span
+            className="card--metacritic"
+            style={metacriticStyle(metacritic)}
+          >
+            {metacritic}
+          </span>
+        </Card.Text>
+
+        <Card.Title>
+          <Link to={`/games/${id}`}>{name}</Link>
+        </Card.Title>
+
+        <div className="card--btn-section">
+          <Button className="card--btn btn--add">
             <ImPlus style={{ marginRight: "5px" }} /> {added}
           </Button>
-        </Card.Body>
-      </Card>
-    </Link>
+          <Button className="card--btn">
+            <BsGift />
+          </Button>
+          <Button className="card--btn">
+            <BsThreeDots />
+          </Button>
+        </div>
+        <div className="card--side-info">
+          <p>
+            <span className="card--info-name">Release date:</span>
+            {DateFormatter(released)}
+          </p>
+          <p>
+            <span className="card--info-name">Genres:</span>
+            {genres.map((genre) => genre.name).join(", ")}
+          </p>
+          <p>
+            <span className="card--info-name">ESRB:</span>
+            {esrb_rating.name}
+          </p>
+        </div>
+      </Card.Body>
+    </Card>
   );
 }

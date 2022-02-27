@@ -7,7 +7,7 @@ export default function GameList({ games }) {
     <div>
       <Row xs={1} sm={2} lg={3} xl={4}>
         {games.results.map((game) => (
-          <Col key={game.id} style={{ padding: "10px" }}>
+          <Col key={game.id} className="card--col">
             <GameCard
               id={game.id}
               img={game.background_image}
@@ -15,6 +15,9 @@ export default function GameList({ games }) {
               name={game.name}
               added={game.added}
               metacritic={game.metacritic}
+              released={game.released}
+              genres={game.genres}
+              esrb_rating={game.esrb_rating}
             />
           </Col>
         ))}

@@ -11,6 +11,7 @@ html {
 }
 
 body {
+  /* position: relative; */
   color: #ffffff;
   background-color: #151515;
   font-family: "Roboto", sans-serif;
@@ -99,6 +100,11 @@ a:hover {
 }
 
 /* ===== CARD ===== */
+.card--col {
+  position: relative;
+  padding: 10px;
+}
+
 .card {
   background-color: #202020;
   border-radius: 10px;
@@ -106,7 +112,17 @@ a:hover {
 }
 
 .card:hover {
-  transform: scale(1.02);
+  position: absolute;
+  width: calc(100% - 20px);
+  transform: scale(1.01);
+  z-index: 1;
+}
+
+.card-img-top {
+  border-radius: 10px 10px 0 0;
+  height: 50vw;
+  max-height: 200px;
+  object-fit: cover;
 }
 
 .card-title {
@@ -114,6 +130,14 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.card-title a {
+  cursor: pointer;
+}
+
+.card:hover .card-title {
+  white-space: normal;
 }
 
 .card-text {
@@ -134,16 +158,56 @@ a:hover {
 }
 
 .card--btn {
-  display: flex;
+  display: none;
   align-items: center;
-  justify-content: space-between;
   background-color: #ffffff1a;
   border: none;
   font-size: 12px;
   transition: 0.1s;
 }
 
-.card--btn:hover {
+.btn--add {
+  display: flex;
+}
+
+.card:hover .card--btn {
+  display: flex;
+}
+
+.card--btn:hover,
+.card--btn:focus {
   background-color: #ffffff;
   color: #151515;
+}
+
+.card--btn-section {
+  display: flex;
+  gap: 5px;
+}
+
+.card--side-info {
+  display: none;
+  padding-top: 5px;
+}
+
+.card:hover .card--side-info {
+  display: block;
+}
+
+.card--side-info > * {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+  margin: 0;
+  padding: 12px 0;
+}
+
+.card--side-info > *:last-child {
+  border: none;
+  padding-bottom: 0;
+}
+
+.card--info-name {
+  opacity: 0.4;
 }
