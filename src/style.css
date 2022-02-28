@@ -62,21 +62,6 @@ a:hover {
   outline: none;
 }
 
-#basic-navbar-nav {
-  gap: 30px;
-}
-
-#basic-navbar-nav .nav-link {
-  color: white;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-#basic-navbar-nav .nav-link:hover {
-  text-decoration: underline;
-  text-underline-position: under;
-}
-
 /* ===== SIDEBAR ===== */
 .sidebar,
 .offcanvas {
@@ -200,6 +185,7 @@ a:hover {
 .card--side-info > * {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 13px;
   margin: 0;
@@ -216,15 +202,32 @@ a:hover {
 }
 
 /* ===== FORM ===== */
-.form-select {
-  display: inline-block;
+.form--section {
+  display: flex;
+  gap: 50px;
+}
+
+.form--group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form--group > * {
+  margin: 0;
+}
+
+.form--select {
   background-color: #262626;
   border: none;
   border-radius: 10px;
   color: white;
   cursor: pointer;
   font-size: 14px;
-  margin-left: 10px;
   padding: 10px;
   width: auto;
+}
+
+#reverse.form-check-input {
+  cursor: pointer;
 }

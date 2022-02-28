@@ -22,7 +22,7 @@ export default function GameCard({
 }) {
   return (
     <Card>
-      <Card.Img variant="top" src={img} />
+      <Card.Img variant="top" src={img} alt="game thumbnail" />
       <Card.Body>
         <Card.Text>
           <span className="card--platforms">

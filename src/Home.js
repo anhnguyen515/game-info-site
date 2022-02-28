@@ -5,18 +5,27 @@ import { Form } from "react-bootstrap";
 
 export default function Home() {
   const [games, setGames] = useState();
-  const [order, setOrder] = useState();
-  // const [reversed, setReversed] = useState(null);
+  const [order, setOrder] = useState({
+    option: "added",
+    reversed: true,
+  });
 
   function handleChange(event) {
-    setOrder(event.target.value);
-    console.log(event.target.value);
+    const { name, value, type, checked } = event.target;
+    setOrder((prev) => {
+      return {
+        ...prev,
+        [name]: type === "checkbox" ? checked : value,
+      };
+    });
   }
 
   function getGames() {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}&ordering=${order}`
+        `${process.env.REACT_APP_API_URL}/games?key=${
+          process.env.REACT_APP_API_KEY
+        }&ordering=${order.reversed ? `-${order.option}` : order.option}`
       )
       .then((res) => {
         const data = res.data;
@@ -28,22 +37,39 @@ export default function Home() {
   useEffect(() => getGames(), [order]);
 
   return (
-    <div>
+    <>
       <h2 style={{ fontSize: "72px" }}>All games</h2>
-      <Form.Group>
-        <Form.Label htmlFor="ordering">Order by: </Form.Label>
-        <Form.Select id="ordering" name="ordering" onChange={handleChange}>
-          <option disabled>-- Ordering options --</option>
-          <option value="name">Name</option>
-          <option value="released">Released date</option>
-          <option value="added">Added</option>
-          <option value="created">Created date</option>
-          <option value="updated">Updated date</option>
-          <option value="rating">Rating</option>
-          <option value="metacritic">Metacritic</option>
-        </Form.Select>
-      </Form.Group>
+      <div className="form--section">
+        <Form.Group className="form--group">
+          <Form.Label htmlFor="ordering">Order by: </Form.Label>
+          <Form.Select
+            bsPrefix="form--select"
+            id="ordering"
+            value={order.option}
+            name="option"
+            onChange={handleChange}
+          >
+            <option value="name">Name</option>
+            <option value="released">Released date</option>
+            <option value="added">Added</option>
+            <option value="created">Created date</option>
+            <option value="updated">Updated date</option>
+            <option value="rating">Rating</option>
+            <option value="metacritic">Metacritic</option>
+          </Form.Select>
+        </Form.Group>
+        <Form.Group className="form--group">
+          <Form.Label htmlFor="reversed">Reversed</Form.Label>
+          <Form.Check
+            type="switch"
+            id="reversed"
+            name="reversed"
+            checked={order.reversed}
+            onChange={handleChange}
+          />
+        </Form.Group>
+      </div>
       {games && <GameList games={games} />}
-    </div>
+    </>
   );
 }
