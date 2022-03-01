@@ -228,6 +228,14 @@ a:hover {
   width: auto;
 }
 
-#reverse.form-check-input {
-  cursor: pointer;
+/* ===== PAGINATION ===== */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 150px 0 100px;
 }
+
+/* ===== GAME DETAIL ===== */

@@ -1,25 +1,11 @@
 import React from "react";
-import { Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Navbar } from "react-bootstrap";
+import Navigation from "./Navigation";
 
 export default function Sidebar() {
   return (
     <Navbar variant="dark" className="sidebar">
-      <Nav className="flex-column sidebar--nav">
-        <Nav.Item>
-          <Link to="/">Home</Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Link to="/reviews">Reviews</Link>
-        </Nav.Item>
-        <Nav.Item>
-          New Releases
-          <Link to="/"></Link>
-          <Link to="/"></Link>
-          <Link to="/"></Link>
-          <Link to="/"></Link>
-        </Nav.Item>
-      </Nav>
+      <Navigation />
     </Navbar>
   );
 }

@@ -6,6 +6,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Home from "./Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GameDetails from "./GameDetails";
+import AllGames from "./AllGames";
 
 export default function App() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -38,6 +39,7 @@ export default function App() {
             >
               <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/games" element={<AllGames />} />
                 <Route path="/games/:id" element={<GameDetails />} />
               </Routes>
             </Col>
