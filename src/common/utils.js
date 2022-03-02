@@ -86,9 +86,8 @@ export function UpperCaseFirstLetter(string) {
   return string[0].toUpperCase() + string.substring(1);
 }
 
-export function OverallRatingColor(rating, rating_top) {
-  const overall = rating / rating_top;
-  if (overall >= 0.75) return "#198754";
-  else if (rating >= 0.5 && rating < 0.75) return "#FFC107";
+export function OverallRatingColor(rating) {
+  if (rating >= 4) return "#198754";
+  else if (rating >= 2 && rating < 4) return "#FFC107";
   return "#EA0202";
 }

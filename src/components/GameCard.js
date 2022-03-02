@@ -18,43 +18,43 @@ export default function GameCard({
   esrb_rating,
 }) {
   return (
-    <Card>
-      <Card.Img variant="top" src={img} alt="game thumbnail" />
-      <Card.Body>
-        <Card.Text>
-          <span className="card--platforms">
-            {platforms.map((item, index) => (
-              <span key={index}>{GetPlatformIcon(item.platform.name)}</span>
-            ))}
-          </span>
-          <span
-            className="card--metacritic"
-            style={MetacriticStyle(metacritic)}
-          >
-            {metacritic}
-          </span>
-        </Card.Text>
+    <Link to={`/games/${slug}`}>
+      <Card>
+        <Card.Img variant="top" src={img} alt="game thumbnail" />
+        <Card.Body>
+          <Card.Text>
+            <span className="card--platforms">
+              {platforms.map((item, index) => (
+                <span key={index}>{GetPlatformIcon(item.platform.name)}</span>
+              ))}
+            </span>
+            <span
+              className="card--metacritic"
+              style={MetacriticStyle(metacritic)}
+            >
+              {metacritic}
+            </span>
+          </Card.Text>
 
-        <Card.Title>
-          <Link to={`/games/${slug}`}>{name}</Link>
-        </Card.Title>
-        <div className="card--side-info">
-          <p>
-            <span className="card--info-name">Release date:</span>
-            {DateFormatter(released)}
-          </p>
-          <p>
-            <span className="card--info-name">Genres:</span>
-            {genres.map((genre) => genre.name).join(", ")}
-          </p>
-          {esrb_rating && (
+          <Card.Title>{name}</Card.Title>
+          <div className="card--side-info">
             <p>
-              <span className="card--info-name">ESRB:</span>
-              {esrb_rating.name}
+              <span className="card--info-name">Release date:</span>
+              {DateFormatter(released)}
             </p>
-          )}
-        </div>
-      </Card.Body>
-    </Card>
+            <p>
+              <span className="card--info-name">Genres:</span>
+              {genres.map((genre) => genre.name).join(", ")}
+            </p>
+            {esrb_rating && (
+              <p>
+                <span className="card--info-name">ESRB:</span>
+                {esrb_rating.name}
+              </p>
+            )}
+          </div>
+        </Card.Body>
+      </Card>
+    </Link>
   );
 }
