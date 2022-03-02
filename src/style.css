@@ -67,16 +67,17 @@ a:hover {
 .offcanvas {
   font-size: 24px;
   font-weight: bold;
-  padding: 40px 10px 0;
+  padding: 10px;
   width: auto;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
 }
 
 .offcanvas {
   background-color: #151515;
-}
-
-.offcanvas-nav {
-  padding: 10px 20px;
 }
 
 .sidebar--nav > * {
@@ -145,34 +146,6 @@ a:hover {
   padding: 0px 7px;
 }
 
-.card--btn {
-  display: none;
-  align-items: center;
-  background-color: #ffffff1a;
-  border: none;
-  font-size: 12px;
-  transition: 0.1s;
-}
-
-.btn--add {
-  display: flex;
-}
-
-.card:hover .card--btn {
-  display: flex;
-}
-
-.card--btn:hover,
-.card--btn:focus {
-  background-color: #ffffff;
-  color: #151515;
-}
-
-.card--btn-section {
-  display: flex;
-  gap: 5px;
-}
-
 .card--side-info {
   display: none;
   padding-top: 5px;
@@ -239,3 +212,95 @@ a:hover {
 }
 
 /* ===== GAME DETAIL ===== */
+.detail--badge {
+  border-radius: 50%;
+  width: 10px;
+  height: 15px;
+}
+
+.detail--date-platform {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.detail--date {
+  background-color: white;
+  border-radius: 5px;
+  color: black;
+  padding: 0 5px;
+}
+
+.detail--platform {
+  display: flex;
+  gap: 10px;
+}
+
+.detail--score-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.detail--score {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.detail--overall-rating {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.detail--graph-description {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.detail--graph-description > * {
+  flex-basis: 50%;
+  margin: 10px 0;
+}
+
+.detail--badge-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.detail--badge-rating {
+  opacity: 0.4;
+}
+
+.detail--description-container {
+  margin-top: 50px;
+}
+
+.detail--description {
+  font-size: 1.1rem;
+  white-space: pre-line;
+}
+
+.detail--specs-container > * {
+  margin: 10px 0;
+  padding-right: 10%;
+}
+
+.detail--specs-container h6 {
+  opacity: 0.3;
+}
+
+.detail--metascore {
+  border: 1px solid white;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 5px 7px;
+}

@@ -10,7 +10,7 @@ import { SiNintendo, SiAtari } from "react-icons/si";
 import { GoBrowser } from "react-icons/go";
 import { MdComputer } from "react-icons/md";
 
-export const metacriticStyle = (metacritic) =>
+export const MetacriticStyle = (metacritic) =>
   metacritic === null
     ? {
         border: "none",
@@ -30,7 +30,7 @@ export const metacriticStyle = (metacritic) =>
         color: "#FF0000",
       };
 
-export function getPlatformIcon(platform) {
+export function GetPlatformIcon(platform) {
   switch (platform) {
     case "PC":
       return <FaWindows />;
@@ -73,4 +73,22 @@ export function DateFormatter(date) {
     month: "short",
     day: "numeric",
   });
+}
+
+export function ProgressBarVariant(title) {
+  if (title === "exceptional") return "success";
+  else if (title === "meh") return "warning";
+  else if (title === "skip") return "danger";
+  return;
+}
+
+export function UpperCaseFirstLetter(string) {
+  return string[0].toUpperCase() + string.substring(1);
+}
+
+export function OverallRatingColor(rating, rating_top) {
+  const overall = rating / rating_top;
+  if (overall >= 0.75) return "#198754";
+  else if (rating >= 0.5 && rating < 0.75) return "#FFC107";
+  return "#EA0202";
 }

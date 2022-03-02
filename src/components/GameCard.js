@@ -1,20 +1,17 @@
 import React from "react";
-import { Card, Button } from "react-bootstrap";
-import { ImPlus } from "react-icons/im";
-import { BsGift, BsThreeDots } from "react-icons/bs";
+import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import {
   DateFormatter,
-  getPlatformIcon,
-  metacriticStyle,
+  GetPlatformIcon,
+  MetacriticStyle,
 } from "../common/utils";
 
 export default function GameCard({
-  id,
+  slug,
   img,
   name,
   platforms,
-  added,
   metacritic,
   released,
   genres,
@@ -27,32 +24,20 @@ export default function GameCard({
         <Card.Text>
           <span className="card--platforms">
             {platforms.map((item, index) => (
-              <span key={index}>{getPlatformIcon(item.platform.name)}</span>
+              <span key={index}>{GetPlatformIcon(item.platform.name)}</span>
             ))}
           </span>
           <span
             className="card--metacritic"
-            style={metacriticStyle(metacritic)}
+            style={MetacriticStyle(metacritic)}
           >
             {metacritic}
           </span>
         </Card.Text>
 
         <Card.Title>
-          <Link to={`/games/${id}`}>{name}</Link>
+          <Link to={`/games/${slug}`}>{name}</Link>
         </Card.Title>
-
-        <div className="card--btn-section">
-          <Button className="card--btn btn--add">
-            <ImPlus style={{ marginRight: "5px" }} /> {added}
-          </Button>
-          <Button className="card--btn">
-            <BsGift />
-          </Button>
-          <Button className="card--btn">
-            <BsThreeDots />
-          </Button>
-        </div>
         <div className="card--side-info">
           <p>
             <span className="card--info-name">Release date:</span>
