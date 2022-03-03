@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import Pagination from "../components/Pagination";
-import { Outlet } from "react-router-dom";
+import Loading from "../components/Loading";
 
 export default function AllGames() {
   const [games, setGames] = useState(null);
@@ -16,6 +16,7 @@ export default function AllGames() {
   );
   const [nextPageUrl, setNextPageUrl] = useState();
   const [prevPageUrl, setPrevPageUrl] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
@@ -55,10 +56,12 @@ export default function AllGames() {
         }
       )
       .then((res) => {
+        setIsLoading(true);
         const data = res.data;
         setGames(data);
         setNextPageUrl(data.next);
         setPrevPageUrl(data.previous);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
 
@@ -67,7 +70,7 @@ export default function AllGames() {
 
   return (
     <>
-      <h2 style={{ fontSize: "72px" }}>All Games</h2>
+      <h2 className="page--heading">All Games</h2>
       <div className="form--section">
         <Form.Group className="form--group">
           <Form.Label htmlFor="ordering">Order by: </Form.Label>
@@ -96,7 +99,9 @@ export default function AllGames() {
           />
         </Form.Group>
       </div>
-      {games && (
+      {isLoading ? (
+        <Loading />
+      ) : (
         <div>
           <GameList games={games} />
           <Pagination
@@ -105,7 +110,6 @@ export default function AllGames() {
           />
         </div>
       )}
-      <Outlet />
     </>
   );
 }

@@ -6,7 +6,7 @@ import Searchbar from "./Searchbar";
 export default function MyNavbar() {
   return (
     <>
-      <Container>
+      <Container fluid="lg">
         <Navbar variant="dark" expand="lg">
           <Navbar.Brand>
             <Link to="/">RAWG</Link>

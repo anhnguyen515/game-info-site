@@ -16,7 +16,6 @@ export default function MainInfo({ game, gameSeries }) {
     <>
       <div className="detail--description-container">
         <h3>About</h3>
-        {/* <p className="detail--description">{game.description_raw}</p> */}
         <ReadMore>{game.description_raw}</ReadMore>
       </div>
       <Row xs={2} className="detail--specs-container">
@@ -61,7 +60,7 @@ export default function MainInfo({ game, gameSeries }) {
           <Col xs={12}>
             <h6>Other games in the series</h6>
             <div className="detail--game-series">
-              {gameSeries.results.map((game) => (
+              {gameSeries.map((game) => (
                 <div key={game.id}>
                   <Link to={`/games/${game.slug}`} onClick={gotoTop}>
                     {game.name}

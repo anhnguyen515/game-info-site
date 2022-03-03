@@ -2,6 +2,7 @@ import GameList from "../components/GameList";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
+import Loading from "../components/Loading";
 
 export default function PopularGames() {
   const [games, setGames] = useState(null);
@@ -10,6 +11,7 @@ export default function PopularGames() {
   );
   const [nextPageUrl, setNextPageUrl] = useState();
   const [prevPageUrl, setPrevPageUrl] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   function gotoNextPage() {
     setCurrentPageUrl(nextPageUrl);
@@ -34,10 +36,12 @@ export default function PopularGames() {
         cancelToken: new axios.CancelToken((c) => (cancel = c)),
       })
       .then((res) => {
+        setIsLoading(true);
         const data = res.data;
         setGames(data);
         setNextPageUrl(data.next);
         setPrevPageUrl(data.previous);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
 
@@ -46,8 +50,10 @@ export default function PopularGames() {
 
   return (
     <>
-      <h2 style={{ fontSize: "72px" }}>Popular Games</h2>
-      {games && (
+      <h2 className="page--heading">Popular Games</h2>
+      {isLoading ? (
+        <Loading />
+      ) : (
         <div>
           <GameList games={games} />
           <Pagination

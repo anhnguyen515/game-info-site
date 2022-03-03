@@ -5,8 +5,17 @@ import {
   FaApple,
   FaAndroid,
   FaLinux,
+  FaSteamSquare,
+  FaGooglePlay,
 } from "react-icons/fa";
-import { SiNintendo, SiAtari } from "react-icons/si";
+import {
+  SiNintendoswitch,
+  SiNintendo,
+  SiAtari,
+  SiGogdotcom,
+  SiEpicgames,
+  SiItchdotio,
+} from "react-icons/si";
 import { GoBrowser } from "react-icons/go";
 import { MdComputer } from "react-icons/md";
 
@@ -17,17 +26,17 @@ export const MetacriticStyle = (metacritic) =>
       }
     : metacritic >= 75
     ? {
-        borderColor: "#66CC33",
-        color: "#66CC33",
+        borderColor: "chartreuse",
+        color: "chartreuse",
       }
     : metacritic >= 50 && metacritic < 75
     ? {
-        borderColor: "#FFCC33",
-        color: "#FFCC33",
+        borderColor: "yellow",
+        color: "yellow",
       }
     : {
-        borderColor: "#FF0000",
-        color: "#FF0000",
+        borderColor: "red",
+        color: "red",
       };
 
 export function GetPlatformIcon(platform) {
@@ -54,13 +63,90 @@ export function GetPlatformIcon(platform) {
       return <FaLinux />;
 
     case "Nintendo":
-      return <SiNintendo />;
+      return <SiNintendoswitch />;
 
     case "Atari":
       return <SiAtari />;
 
     case "Web":
       return <GoBrowser />;
+
+    default:
+      break;
+  }
+}
+
+export function getStoreIcon(storeId) {
+  switch (storeId) {
+    case 1:
+      return (
+        <span>
+          <FaSteamSquare /> Steam
+        </span>
+      );
+
+    case 3:
+      return (
+        <span>
+          <FaPlaystation /> PlayStation Store
+        </span>
+      );
+
+    case 2:
+      return (
+        <span>
+          <FaXbox /> Xbox Store
+        </span>
+      );
+
+    case 7:
+      return (
+        <span>
+          <FaXbox /> Xbox 360 Store
+        </span>
+      );
+
+    case 4:
+      return (
+        <span>
+          <FaApple /> App Store
+        </span>
+      );
+
+    case 5:
+      return (
+        <span>
+          <SiGogdotcom /> GOG
+        </span>
+      );
+
+    case 6:
+      return (
+        <span>
+          <SiNintendo /> Nintendo Store
+        </span>
+      );
+
+    case 8:
+      return (
+        <span>
+          <FaGooglePlay /> Google Play
+        </span>
+      );
+
+    case 9:
+      return (
+        <span>
+          <SiItchdotio /> itch.io
+        </span>
+      );
+
+    case 11:
+      return (
+        <span>
+          <SiEpicgames /> Epic Games
+        </span>
+      );
 
     default:
       break;
@@ -87,7 +173,7 @@ export function UpperCaseFirstLetter(string) {
 }
 
 export function OverallRatingColor(rating) {
-  if (rating >= 4) return "#198754";
-  else if (rating >= 2 && rating < 4) return "#FFC107";
-  return "#EA0202";
+  if (rating >= 4) return "chartreuse";
+  else if (rating >= 2 && rating < 4) return "yellow";
+  return "red";
 }

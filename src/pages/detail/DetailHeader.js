@@ -16,14 +16,15 @@ export default function DetailHeader({ game }) {
           ))}
         </span>
       </div>
-      <h2 style={{ fontSize: 72 }}>{game.name}</h2>
+      <h2 className="page--heading">{game.name}</h2>
       <div className="detail--score-container">
         <div className="detail--score">
           <h3>Overall:</h3>
           <h3
             className="detail--overall-rating"
             style={{
-              backgroundColor: OverallRatingColor(game.rating, 5),
+              borderColor: OverallRatingColor(game.rating),
+              color: OverallRatingColor(game.rating),
             }}
           >
             {game.rating}

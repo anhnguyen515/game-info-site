@@ -11,19 +11,18 @@ export default function ReadMore({ children }) {
   return (
     <>
       <p className="detail--description">
-        {isReadMore ? text.slice(0, character) : text}
-        <span
-          onClick={toggleReadMore}
-          className="detail--date"
-          style={{
-            marginLeft: 10,
-            opacity: 0.3,
-            cursor: "pointer",
-          }}
-        >
-          {isReadMore ? "Read more" : "Show less"}
-        </span>
+        {isReadMore ? text.slice(0, character) : text}{" "}
       </p>
+      <span
+        onClick={toggleReadMore}
+        className="detail--date"
+        style={{
+          opacity: 0.3,
+          cursor: "pointer",
+        }}
+      >
+        {isReadMore ? "Read more" : "Show less"}
+      </span>
     </>
   );
 }
