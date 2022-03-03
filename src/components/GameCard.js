@@ -18,7 +18,7 @@ export default function GameCard({
   esrb_rating,
 }) {
   return (
-    <Link to={`/games/${slug}`}>
+    <Link to={`/games/${slug}`} className="card--link">
       <Card>
         <Card.Img variant="top" src={img} alt="game thumbnail" />
         <Card.Body>

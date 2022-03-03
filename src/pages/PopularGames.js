@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 
 export default function PopularGames() {
-  const [games, setGames] = useState();
+  const [games, setGames] = useState(null);
   const [currentPageUrl, setCurrentPageUrl] = useState(
     `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}&page_size=12`
   );

@@ -22,7 +22,7 @@ a {
 }
 
 a:hover {
-  color: white;
+  color: #737373;
 }
 
 /* ===== NAVBAR ===== */
@@ -82,10 +82,6 @@ a:hover {
 
 .sidebar--nav > * {
   padding: 10px 0;
-}
-
-.sidebar--nav a:hover {
-  color: #737373;
 }
 
 .navbar.fixed-bottom {
@@ -176,6 +172,10 @@ a:hover {
 
 .card--info-name {
   opacity: 0.4;
+}
+
+.card--link:hover {
+  color: white;
 }
 
 /* ===== FORM ===== */
@@ -295,7 +295,6 @@ a:hover {
 
 .detail--specs-container > * {
   margin: 10px 0;
-  padding-right: 10%;
 }
 
 .detail--specs-container h6 {
@@ -309,6 +308,13 @@ a:hover {
   padding: 5px 7px;
 }
 
-.detail--game-series a:hover {
-  color: #737373;
+.detail--background-image {
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 }

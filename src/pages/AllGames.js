@@ -6,7 +6,7 @@ import Pagination from "../components/Pagination";
 import { Outlet } from "react-router-dom";
 
 export default function AllGames() {
-  const [games, setGames] = useState();
+  const [games, setGames] = useState(null);
   const [order, setOrder] = useState({
     option: "added",
     reversed: true,

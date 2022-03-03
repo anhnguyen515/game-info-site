@@ -3,36 +3,30 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [popularGames, setPopularGames] = useState();
-  const [highestMetascore, setHighestMetascore] = useState();
+  const [popularGames, setPopularGames] = useState(null);
+  const [highestMetascore, setHighestMetascore] = useState(null);
 
-  function getPopularGames() {
-    axios
-      .get(
-        `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}&ordering=-added&page_size=8`
-      )
-      .then((res) => {
-        const data = res.data;
-        setPopularGames(data);
-      })
-      .catch((err) => console.log(err));
-  }
+  function fetchGames() {
+    const popular = `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}&ordering=-added&page_size=8`;
+    const metascore = `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}&ordering=-metacritic&page_size=8`;
 
-  function getHighestMetascoreGames() {
+    const getPopular = axios.get(popular);
+    const getMetascore = axios.get(metascore);
     axios
-      .get(
-        `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}&ordering=-metacritic&page_size=8`
+      .all([getPopular, getMetascore])
+      .then(
+        axios.spread((...allData) => {
+          const popularGamesData = allData[0].data;
+          const metascoreGamesData = allData[1].data;
+          setPopularGames(popularGamesData);
+          setHighestMetascore(metascoreGamesData);
+        })
       )
-      .then((res) => {
-        const data = res.data;
-        setHighestMetascore(data);
-      })
       .catch((err) => console.log(err));
   }
 
   useEffect(() => {
-    getPopularGames();
-    getHighestMetascoreGames();
+    fetchGames();
   }, []);
 
   return (

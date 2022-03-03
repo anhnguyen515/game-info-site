@@ -2,13 +2,22 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { MetacriticStyle, DateFormatter } from "../../common/utils";
+import ReadMore from "../../components/ReadMore";
 
 export default function MainInfo({ game, gameSeries }) {
+  function gotoTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
+  }
+
   return (
     <>
       <div className="detail--description-container">
         <h3>About</h3>
-        <p className="detail--description">{game.description_raw}</p>
+        {/* <p className="detail--description">{game.description_raw}</p> */}
+        <ReadMore>{game.description_raw}</ReadMore>
       </div>
       <Row xs={2} className="detail--specs-container">
         <Col>
@@ -54,7 +63,9 @@ export default function MainInfo({ game, gameSeries }) {
             <div className="detail--game-series">
               {gameSeries.results.map((game) => (
                 <div key={game.id}>
-                  <Link to={`/games/${game.slug}`}>{game.name}</Link>
+                  <Link to={`/games/${game.slug}`} onClick={gotoTop}>
+                    {game.name}
+                  </Link>
                 </div>
               ))}
             </div>
