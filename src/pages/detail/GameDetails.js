@@ -4,6 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { getStoreIcon } from "../../common/utils";
 import Loading from "../../components/Loading";
+import StoreButton from "../../components/StoreButton";
 import DetailHeader from "./DetailHeader";
 import MainInfo from "./MainInfo";
 import Rating from "./Rating";
@@ -55,16 +56,24 @@ export default function GameDetails() {
                 <MainInfo game={game} gameSeries={gameSeries} />
               </Col>
               <Col xs={12} lg={5}>
-                <h4>Where to buy</h4>
-                <Row xs={2}>
-                  {gameStores.map((store) => (
-                    <Col key={store.store_id}>
-                      <a href={`${store.url}`} target="_blank" rel="noreferrer">
-                        {getStoreIcon(store.store_id)}
-                      </a>
-                    </Col>
-                  ))}
-                </Row>
+                <div>
+                  <h4>Where to buy</h4>
+                  <Row xs={2}>
+                    {gameStores.map((store) => (
+                      <Col key={store.store_id}>
+                        <a
+                          href={`${store.url}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <StoreButton>
+                            {getStoreIcon(store.store_id)}
+                          </StoreButton>
+                        </a>
+                      </Col>
+                    ))}
+                  </Row>
+                </div>
               </Col>
             </Row>
           </Container>

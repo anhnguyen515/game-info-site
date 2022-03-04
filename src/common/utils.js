@@ -10,7 +10,6 @@ import {
 } from "react-icons/fa";
 import {
   SiNintendoswitch,
-  SiNintendo,
   SiAtari,
   SiGogdotcom,
   SiEpicgames,
@@ -80,72 +79,102 @@ export function getStoreIcon(storeId) {
   switch (storeId) {
     case 1:
       return (
-        <span>
-          <FaSteamSquare /> Steam
-        </span>
+        <>
+          <span>
+            <FaSteamSquare />
+          </span>
+          Steam
+        </>
       );
 
     case 3:
       return (
-        <span>
-          <FaPlaystation /> PlayStation Store
-        </span>
+        <>
+          <span>
+            <FaPlaystation />
+          </span>
+          PlayStation Store
+        </>
       );
 
     case 2:
       return (
-        <span>
-          <FaXbox /> Xbox Store
-        </span>
+        <>
+          <span>
+            <FaXbox />
+          </span>
+          Xbox Store
+        </>
       );
 
     case 7:
       return (
-        <span>
-          <FaXbox /> Xbox 360 Store
-        </span>
+        <>
+          <span>
+            <FaXbox />
+          </span>
+          Xbox 360 Store
+        </>
       );
 
     case 4:
       return (
-        <span>
-          <FaApple /> App Store
-        </span>
+        <>
+          <span>
+            <FaApple />
+          </span>
+          App Store
+        </>
       );
 
     case 5:
       return (
-        <span>
-          <SiGogdotcom /> GOG
-        </span>
+        <>
+          <span>
+            <SiGogdotcom />
+          </span>
+          GOG
+        </>
       );
 
     case 6:
       return (
-        <span>
-          <SiNintendo /> Nintendo Store
-        </span>
+        <>
+          <span>
+            <SiNintendoswitch />
+          </span>
+          Nintendo Store
+        </>
       );
 
     case 8:
       return (
-        <span>
-          <FaGooglePlay /> Google Play
-        </span>
+        <>
+          <span>
+            <FaGooglePlay />
+          </span>
+          Google Play
+        </>
       );
 
     case 9:
       return (
-        <span>
-          <SiItchdotio /> itch.io
-        </span>
+        <>
+          <span>
+            <SiItchdotio />
+          </span>
+          itch.io
+        </>
       );
 
     case 11:
       return (
-        <span>
-          <SiEpicgames /> Epic Games
-        </span>
+        <>
+          <span>
+            <SiEpicgames />
+          </span>
+          Epic Games
+        </>
       );
 
     default:

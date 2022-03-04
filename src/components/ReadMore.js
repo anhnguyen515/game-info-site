@@ -17,8 +17,9 @@ export default function ReadMore({ children }) {
         onClick={toggleReadMore}
         className="detail--date"
         style={{
-          opacity: 0.3,
           cursor: "pointer",
+          fontSize: "14px",
+          opacity: 0.4,
         }}
       >
         {isReadMore ? "Read more" : "Show less"}

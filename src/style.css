@@ -49,6 +49,13 @@ a:hover {
   border-radius: 50px;
   padding: 15px 20px;
   flex: 1;
+  transition: 0.2s;
+}
+
+.nav--search:focus-within,
+.nav--search:hover {
+  background-color: white;
+  color: #151515;
 }
 
 .nav--searchIcon {
@@ -63,7 +70,9 @@ a:hover {
   flex: 1;
 }
 
+.nav--searchBar:hover,
 .nav--searchBar:focus {
+  color: #151515;
   outline: none;
 }
 
@@ -93,6 +102,7 @@ a:hover {
 
 .navbar.fixed-bottom {
   background-color: #151515;
+  padding: 10px;
 }
 
 /* ===== CARD ===== */
@@ -126,10 +136,6 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.card-title a {
-  cursor: pointer;
 }
 
 .card:hover .card-title {
@@ -328,4 +334,27 @@ a:hover {
   right: 0;
   bottom: 0;
   z-index: -1;
+}
+
+.detail--store-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 7px;
+  color: #bbb;
+  font-size: 0.9rem;
+  height: 50px;
+  margin: 10px 0;
+  transition: 0.3s;
+}
+
+.detail--store-btn:hover {
+  background: white;
+  color: #151515;
+}
+
+.detail--store-btn > span {
+  transform: scale(1.4);
 }
