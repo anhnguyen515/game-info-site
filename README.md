@@ -1,1 +1,1 @@
-# A gaming info site inspired by RAWG
+# RAWG Front-end Clone
