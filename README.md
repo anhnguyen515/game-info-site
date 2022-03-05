@@ -1,1 +1,1 @@
-# RAWG Front-end Clone
+# RAWG based Front-end for a games information website

@@ -5,7 +5,7 @@ import OffcanvasSidebar from "./components/Sidebar/OffcanvasSidebar";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Home from "./pages/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import GameDetails from "./pages/detail/GameDetails";
+import GameDetails from "./pages/GameDetails";
 import AllGames from "./pages/AllGames";
 import PopularGames from "./pages/PopularGames";
 

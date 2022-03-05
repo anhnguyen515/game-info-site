@@ -56,7 +56,6 @@ export default function AllGames() {
         }
       )
       .then((res) => {
-        setIsLoading(true);
         const data = res.data;
         setGames(data);
         setNextPageUrl(data.next);

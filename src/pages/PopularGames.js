@@ -36,7 +36,6 @@ export default function PopularGames() {
         cancelToken: new axios.CancelToken((c) => (cancel = c)),
       })
       .then((res) => {
-        setIsLoading(true);
         const data = res.data;
         setGames(data);
         setNextPageUrl(data.next);
