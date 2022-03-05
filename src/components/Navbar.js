@@ -9,7 +9,7 @@ export default function MyNavbar() {
       <Container fluid="lg">
         <Navbar variant="dark" expand="lg">
           <Navbar.Brand>
-            <Link to="/">RAWG</Link>
+            <Link to="/">RAWGR</Link>
           </Navbar.Brand>
           <Searchbar />
         </Navbar>

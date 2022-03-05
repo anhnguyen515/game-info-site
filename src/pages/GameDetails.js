@@ -8,6 +8,7 @@ import Images from "../components/DetailPage/Images";
 import MainInfo from "../components/DetailPage/MainInfo";
 import Rating from "../components/DetailPage/Rating";
 import Stores from "../components/DetailPage/Stores";
+import Comment from "../components/Comment";
 
 export default function GameDetails() {
   const { slug } = useParams();
@@ -66,6 +67,12 @@ export default function GameDetails() {
                 <br />
                 <Stores gameStores={gameStores} />
               </Col>
+            </Row>
+            <br />
+            <hr />
+            <Row>
+              <h2>Comments</h2>
+              <Comment game={game} />
             </Row>
           </Container>
           <div

@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import GameDetails from "./pages/GameDetails";
 import AllGames from "./pages/AllGames";
 import PopularGames from "./pages/PopularGames";
+import SearchResults from "./pages/SearchResults";
 
 export default function App() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -42,6 +43,7 @@ export default function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/games" element={<AllGames />} />
                 <Route path="/games/:slug" element={<GameDetails />} />
+                <Route path="/search/:query" element={<SearchResults />} />
                 <Route path="/popular" element={<PopularGames />} />
               </Routes>
             </Col>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Image, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 
 export default function Images({ gameImages }) {
   const layout = {
@@ -8,10 +8,12 @@ export default function Images({ gameImages }) {
     lg: 1,
     xl: 2,
   };
+
   return (
     <>
       <br />
       <br />
+      <h4>Screenshots</h4>
       <Row {...layout}>
         {gameImages.map((image) => (
           <Col key={image.id} className="detail--screenshot-container">

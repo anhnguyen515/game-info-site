@@ -58,6 +58,12 @@ a:hover {
   color: #151515;
 }
 
+.nav--search:hover .nav--searchBar,
+.nav--searchBar:focus {
+  color: #151515;
+  outline: none;
+}
+
 .nav--searchIcon {
   margin-right: 15px;
 }
@@ -68,12 +74,6 @@ a:hover {
   color: white;
   font-size: 14px;
   flex: 1;
-}
-
-.nav--searchBar:hover,
-.nav--searchBar:focus {
-  color: #151515;
-  outline: none;
 }
 
 /* ===== SIDEBAR ===== */
