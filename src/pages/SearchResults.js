@@ -35,7 +35,7 @@ export default function SearchResults() {
     let cancel;
     axios
       .get(
-        `${currentPageUrl}&search=${query}&search_exact=true&ordering=-added`,
+        `${currentPageUrl}&ordering=-added&search_exact=true&search=${query}`,
         {
           cancelToken: new axios.CancelToken((c) => (cancel = c)),
         }
@@ -52,8 +52,6 @@ export default function SearchResults() {
     return () => cancel();
   }, [query, currentPageUrl]);
 
-  console.log(games);
-
   return (
     <>
       {isLoading ? (
@@ -65,17 +63,12 @@ export default function SearchResults() {
           <h2 className="page--heading">
             Search results for: {query.split("-").join(" ")}
           </h2>
-          {isLoading ? (
-            <Loading />
-          ) : (
-            <div>
-              <GameList games={games} />
-              <Pagination
-                gotoNextPage={nextPageUrl ? gotoNextPage : null}
-                gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
-              />
-            </div>
-          )}
+
+          <GameList games={games} />
+          <Pagination
+            gotoNextPage={nextPageUrl ? gotoNextPage : null}
+            gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
+          />
         </div>
       )}
     </>

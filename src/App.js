@@ -31,10 +31,11 @@ export default function App() {
         <MyNavbar />
         <Container fluid style={{ padding: "10px 40px" }}>
           <Row>
-            <Col xs={12} md="auto">
+            <Col lg={2}>
               {width >= breakpoint ? <Sidebar /> : <OffcanvasSidebar />}
             </Col>
             <Col
+              lg={10}
               style={{
                 marginTop: "20px",
               }}
