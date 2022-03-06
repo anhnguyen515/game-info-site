@@ -24,7 +24,7 @@ export default function GameCard({
         <Card.Body>
           <Card.Text>
             <span className="card--platforms">
-              {platforms.map((item, index) => (
+              {platforms?.map((item, index) => (
                 <span key={index}>{GetPlatformIcon(item.platform.name)}</span>
               ))}
             </span>

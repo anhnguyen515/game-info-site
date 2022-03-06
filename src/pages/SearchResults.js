@@ -7,9 +7,9 @@ import GameList from "../components/GameList";
 
 export default function SearchResults() {
   const { query } = useParams();
-  const [games, setGames] = useState(null);
+  const [games, setGames] = useState();
   const [currentPageUrl, setCurrentPageUrl] = useState(
-    `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}&search=${query}`
+    `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}`
   );
   const [nextPageUrl, setNextPageUrl] = useState();
   const [prevPageUrl, setPrevPageUrl] = useState();
@@ -34,9 +34,12 @@ export default function SearchResults() {
   useEffect(() => {
     let cancel;
     axios
-      .get(`${currentPageUrl}`, {
-        cancelToken: new axios.CancelToken((c) => (cancel = c)),
-      })
+      .get(
+        `${currentPageUrl}&search=${query}&search_exact=true&ordering=-added`,
+        {
+          cancelToken: new axios.CancelToken((c) => (cancel = c)),
+        }
+      )
       .then((res) => {
         const data = res.data;
         setGames(data);
@@ -47,21 +50,32 @@ export default function SearchResults() {
       .catch((err) => console.log(err));
 
     return () => cancel();
-  }, [currentPageUrl, query]);
+  }, [query, currentPageUrl]);
+
+  console.log(games);
+
   return (
     <>
-      <h2 className="page--heading">
-        Search results for: {query.split("-").join(" ")}
-      </h2>
       {isLoading ? (
         <Loading />
+      ) : games?.count === 0 ? (
+        <h2>No result for: {query.split("-").join(" ")}</h2>
       ) : (
         <div>
-          <GameList games={games} />
-          <Pagination
-            gotoNextPage={nextPageUrl ? gotoNextPage : null}
-            gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
-          />
+          <h2 className="page--heading">
+            Search results for: {query.split("-").join(" ")}
+          </h2>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <div>
+              <GameList games={games} />
+              <Pagination
+                gotoNextPage={nextPageUrl ? gotoNextPage : null}
+                gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
+              />
+            </div>
+          )}
         </div>
       )}
     </>

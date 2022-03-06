@@ -12,10 +12,10 @@ import Comment from "../components/Comment";
 
 export default function GameDetails() {
   const { slug } = useParams();
-  const [game, setGame] = useState(null);
-  const [gameSeries, setGameSeries] = useState(null);
-  const [gameStores, setGameStores] = useState(null);
-  const [gameImages, setGameImages] = useState(null);
+  const [game, setGame] = useState();
+  const [gameSeries, setGameSeries] = useState();
+  const [gameStores, setGameStores] = useState();
+  const [gameImages, setGameImages] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   function fetchGameDetail() {

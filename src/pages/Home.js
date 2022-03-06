@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 
 export default function Home() {
-  const [popularGames, setPopularGames] = useState(null);
-  const [highestMetascore, setHighestMetascore] = useState(null);
+  const [popularGames, setPopularGames] = useState();
+  const [highestMetascore, setHighestMetascore] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   function fetchGames() {

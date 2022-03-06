@@ -10,6 +10,15 @@ export default function Searchbar() {
     setSearch(event.target.value);
   }
 
+  function handleClick() {
+    if (search === "") {
+      return;
+    } else {
+      navigate(`/search/${search.split(" ").join("-")}`);
+      setSearch("");
+    }
+  }
+
   function handleKeyPress(event) {
     if (event.target.value === "") {
       return;
@@ -23,7 +32,11 @@ export default function Searchbar() {
 
   return (
     <div className="nav--search">
-      <BsSearch className="nav--searchIcon" />
+      <BsSearch
+        className="nav--searchIcon"
+        onClick={handleClick}
+        style={{ cursor: "pointer" }}
+      />
       <input
         className="nav--searchBar"
         type="search"

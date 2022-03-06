@@ -6,7 +6,7 @@ import Pagination from "../components/Pagination";
 import Loading from "../components/Loading";
 
 export default function AllGames() {
-  const [games, setGames] = useState(null);
+  const [games, setGames] = useState();
   const [order, setOrder] = useState({
     option: "added",
     reversed: true,

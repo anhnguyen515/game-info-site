@@ -5,7 +5,7 @@ import Pagination from "../components/Pagination";
 import Loading from "../components/Loading";
 
 export default function PopularGames() {
-  const [games, setGames] = useState(null);
+  const [games, setGames] = useState();
   const [currentPageUrl, setCurrentPageUrl] = useState(
     `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}&page_size=12`
   );
