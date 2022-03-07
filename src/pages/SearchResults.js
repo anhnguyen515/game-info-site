@@ -7,12 +7,12 @@ import GameList from "../components/GameList";
 
 export default function SearchResults() {
   const { query } = useParams();
-  const [games, setGames] = useState();
+  const [games, setGames] = useState(null);
   const [currentPageUrl, setCurrentPageUrl] = useState(
     `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}`
   );
-  const [nextPageUrl, setNextPageUrl] = useState();
-  const [prevPageUrl, setPrevPageUrl] = useState();
+  const [nextPageUrl, setNextPageUrl] = useState(null);
+  const [prevPageUrl, setPrevPageUrl] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   function gotoNextPage() {
@@ -60,8 +60,8 @@ export default function SearchResults() {
         <h2>No result for: {query.split("-").join(" ")}</h2>
       ) : (
         <div>
-          <h2 className="page--heading">
-            Search results for: {query.split("-").join(" ")}
+          <h2>
+            {games.count} {games.count > 1 ? "results" : "result"} found
           </h2>
 
           <GameList games={games} />

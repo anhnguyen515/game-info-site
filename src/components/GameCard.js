@@ -6,6 +6,7 @@ import {
   GetPlatformIcon,
   MetacriticStyle,
 } from "../common/utils";
+import placeholderImg from "../images/RAWGR-logo-white.png";
 
 export default function GameCard({
   slug,
@@ -20,7 +21,11 @@ export default function GameCard({
   return (
     <Link to={`/games/${slug}`} className="card--link">
       <Card>
-        <Card.Img variant="top" src={img} alt="game thumbnail" />
+        <Card.Img
+          variant="top"
+          src={img ? img : placeholderImg}
+          alt="game thumbnail"
+        />
         <Card.Body>
           <Card.Text>
             <span className="card--platforms">

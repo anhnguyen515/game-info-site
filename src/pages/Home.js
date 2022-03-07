@@ -2,10 +2,11 @@ import GameList from "../components/GameList";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
+import { Link } from "react-router-dom";
 
 export default function Home() {
-  const [popularGames, setPopularGames] = useState();
-  const [highestMetascore, setHighestMetascore] = useState();
+  const [popularGames, setPopularGames] = useState(null);
+  const [highestMetascore, setHighestMetascore] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   function fetchGames() {
@@ -38,10 +39,14 @@ export default function Home() {
         <Loading />
       ) : (
         <div>
-          <h2 className="page--heading">Fans Favourites</h2>
+          <h2 className="page--heading">
+            <Link to="/popular">Fans Favourites</Link>
+          </h2>
           <GameList games={popularGames} />
 
-          <h2 className="page--heading">Highest Metascore</h2>
+          <h2 className="page--heading">
+            <Link to="/metascore">Highest Metascore</Link>
+          </h2>
           <GameList games={highestMetascore} />
         </div>
       )}

@@ -9,6 +9,7 @@ import GameDetails from "./pages/GameDetails";
 import AllGames from "./pages/AllGames";
 import PopularGames from "./pages/PopularGames";
 import SearchResults from "./pages/SearchResults";
+import MetascoreGames from "./pages/MetascoreGames";
 
 export default function App() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -31,11 +32,12 @@ export default function App() {
         <MyNavbar />
         <Container fluid style={{ padding: "10px 40px" }}>
           <Row>
-            <Col lg={2}>
+            <Col xs="auto" lg={3} xl={2}>
               {width >= breakpoint ? <Sidebar /> : <OffcanvasSidebar />}
             </Col>
             <Col
-              lg={10}
+              lg={9}
+              xl={10}
               style={{
                 marginTop: "20px",
               }}
@@ -46,6 +48,7 @@ export default function App() {
                 <Route path="/games/:slug" element={<GameDetails />} />
                 <Route path="/search/:query" element={<SearchResults />} />
                 <Route path="/popular" element={<PopularGames />} />
+                <Route path="/metascore" element={<MetascoreGames />} />
               </Routes>
             </Col>
           </Row>

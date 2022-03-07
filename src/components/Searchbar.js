@@ -31,20 +31,22 @@ export default function Searchbar() {
   }
 
   return (
-    <div className="nav--search">
-      <BsSearch
-        className="nav--searchIcon"
-        onClick={handleClick}
-        style={{ cursor: "pointer" }}
-      />
-      <input
-        className="nav--searchBar"
-        type="search"
-        value={search}
-        onChange={handleChange}
-        onKeyPress={handleKeyPress}
-        placeholder="Search your games"
-      />
-    </div>
+    <>
+      <div className="nav--search">
+        <BsSearch
+          className="nav--searchIcon"
+          onClick={handleClick}
+          style={{ cursor: "pointer" }}
+        />
+        <input
+          className="nav--searchBar"
+          type="search"
+          value={search}
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
+          placeholder="Search your games"
+        />
+      </div>
+    </>
   );
 }

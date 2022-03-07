@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 import Loading from "../components/Loading";
 
-export default function PopularGames() {
+export default function MetascoreGames() {
   const [games, setGames] = useState(null);
   const [currentPageUrl, setCurrentPageUrl] = useState(
     `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}&page_size=12`
@@ -32,7 +32,7 @@ export default function PopularGames() {
   useEffect(() => {
     let cancel;
     axios
-      .get(`${currentPageUrl}&ordering=-popular`, {
+      .get(`${currentPageUrl}&ordering=-metacritic`, {
         cancelToken: new axios.CancelToken((c) => (cancel = c)),
       })
       .then((res) => {
@@ -49,7 +49,7 @@ export default function PopularGames() {
 
   return (
     <>
-      <h2 className="page--heading">Popular Games</h2>
+      <h2 className="page--heading">Highest Metascore Games</h2>
       {isLoading ? (
         <Loading />
       ) : (

@@ -6,7 +6,7 @@ import Pagination from "../components/Pagination";
 import Loading from "../components/Loading";
 
 export default function AllGames() {
-  const [games, setGames] = useState();
+  const [games, setGames] = useState(null);
   const [order, setOrder] = useState({
     option: "added",
     reversed: true,
@@ -14,8 +14,8 @@ export default function AllGames() {
   const [currentPageUrl, setCurrentPageUrl] = useState(
     `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}`
   );
-  const [nextPageUrl, setNextPageUrl] = useState();
-  const [prevPageUrl, setPrevPageUrl] = useState();
+  const [nextPageUrl, setNextPageUrl] = useState(null);
+  const [prevPageUrl, setPrevPageUrl] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   function handleChange(event) {
