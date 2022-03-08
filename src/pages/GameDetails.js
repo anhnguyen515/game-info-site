@@ -18,7 +18,7 @@ export default function GameDetails() {
   const [gameImages, setGameImages] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  function fetchGameDetail() {
+  useEffect(() => {
     const game = `${process.env.REACT_APP_API_URL}/games/${slug}?key=${process.env.REACT_APP_API_KEY}`;
     const series = `${process.env.REACT_APP_API_URL}/games/${slug}/game-series?key=${process.env.REACT_APP_API_KEY}`;
     const images = `${process.env.REACT_APP_API_URL}/games/${slug}/screenshots?key=${process.env.REACT_APP_API_KEY}`;
@@ -37,6 +37,7 @@ export default function GameDetails() {
           const seriesData = allData[1].data.results;
           const imagesData = allData[2].data.results;
           const storesData = allData[3].data.results;
+          setIsLoading(true);
           setGame(gameData);
           setGameSeries(seriesData);
           setGameImages(imagesData);
@@ -45,10 +46,6 @@ export default function GameDetails() {
         })
       )
       .catch((err) => console.log(err));
-  }
-
-  useEffect(() => {
-    fetchGameDetail();
   }, [slug]);
   return (
     <>
@@ -71,7 +68,6 @@ export default function GameDetails() {
             <br />
             <hr />
             <Row>
-              <h2>Comments</h2>
               <Comment game={game} />
             </Row>
           </Container>

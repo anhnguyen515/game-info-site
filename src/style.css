@@ -115,7 +115,7 @@ a:hover {
 
 .sidebar {
   position: sticky;
-  top: 50px;
+  top: 10px;
 }
 
 .offcanvas {
@@ -129,9 +129,11 @@ a:hover {
 }
 
 .dropdown--links {
-  font-size: 1.1rem;
+  display: block;
+  font-size: 1rem;
   font-weight: normal;
   padding: 10px 0;
+  margin-left: 5px;
 }
 
 .dropdown--logo {
@@ -139,6 +141,16 @@ a:hover {
   border-radius: 5px;
   padding: 7px;
   margin-right: 5px;
+  transition: 0.2s;
+}
+
+.dropdown--links:hover {
+  color: white;
+}
+
+.dropdown--links:hover .dropdown--logo {
+  background-color: white;
+  color: #151515;
 }
 
 .navbar.fixed-bottom {
@@ -407,4 +419,11 @@ a:hover {
   aspect-ratio: 16 / 9;
   background-size: cover;
   border-radius: 5px;
+  image-resolution: 100dpi;
+}
+
+.detail--game-series a:hover {
+  color: white;
+  text-decoration: underline;
+  text-underline-position: under;
 }

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Nav, Navbar } from "react-bootstrap";
+import { Image, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { GetPlatformIcon } from "../../common/utils";
 import { IoMdArrowDropdownCircle } from "react-icons/io";
@@ -42,9 +42,6 @@ export default function Navigation({ offcanvas, fixedBottom }) {
     fetchData();
   }, []);
 
-  console.log(platforms);
-  console.log(genres);
-
   return (
     <Navbar
       variant="dark"
@@ -69,14 +66,16 @@ export default function Navigation({ offcanvas, fixedBottom }) {
             {togglePlatforms && (
               <div>
                 {platforms.map((platform) => (
-                  <div key={platform.id} className="dropdown--links">
-                    <Link to="/">
-                      <span className="dropdown--logo">
-                        {GetPlatformIcon(platform.name)}
-                      </span>
-                      {platform.name}
-                    </Link>
-                  </div>
+                  <Link
+                    to={`/games/platform/${platform.id}`}
+                    key={platform.id}
+                    className="dropdown--links"
+                  >
+                    <span className="dropdown--logo">
+                      {GetPlatformIcon(platform.name)}
+                    </span>
+                    {platform.name}
+                  </Link>
                 ))}
               </div>
             )}
@@ -90,9 +89,13 @@ export default function Navigation({ offcanvas, fixedBottom }) {
             {toggleGenres && (
               <div>
                 {genres.map((genre) => (
-                  <div key={genre.id} className="dropdown--links">
-                    <Link to="/">{genre.name}</Link>
-                  </div>
+                  <Link
+                    to={`/games/genre/${genre.id}`}
+                    key={genre.id}
+                    className="dropdown--links"
+                  >
+                    {genre.name}
+                  </Link>
                 ))}
               </div>
             )}

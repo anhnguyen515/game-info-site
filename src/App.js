@@ -10,6 +10,8 @@ import AllGames from "./pages/AllGames";
 import PopularGames from "./pages/PopularGames";
 import SearchResults from "./pages/SearchResults";
 import MetascoreGames from "./pages/MetascoreGames";
+import GamesByPlatforms from "./pages/GamesByPlatforms";
+import GamesByGenres from "./pages/GamesByGenres";
 
 export default function App() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -46,6 +48,11 @@ export default function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/games" element={<AllGames />} />
                 <Route path="/games/:slug" element={<GameDetails />} />
+                <Route
+                  path="/games/platform/:id"
+                  element={<GamesByPlatforms />}
+                />
+                <Route path="/games/genre/:id" element={<GamesByGenres />} />
                 <Route path="/search/:query" element={<SearchResults />} />
                 <Route path="/popular" element={<PopularGames />} />
                 <Route path="/metascore" element={<MetascoreGames />} />

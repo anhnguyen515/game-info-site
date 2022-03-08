@@ -1,12 +1,13 @@
+import GameList from "../components/GameList";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 import Loading from "../components/Loading";
-import GameList from "../components/GameList";
+import { useParams } from "react-router-dom";
+import { GetGenreName } from "../common/utils";
 
-export default function SearchResults() {
-  const { query } = useParams();
+export default function GamesByGenres() {
+  const { id } = useParams();
   const [games, setGames] = useState(null);
   const [currentPageUrl, setCurrentPageUrl] = useState(
     `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}`
@@ -34,12 +35,9 @@ export default function SearchResults() {
   useEffect(() => {
     let cancel;
     axios
-      .get(
-        `${currentPageUrl}&ordering=-added&search_exact=true&search=${query}`,
-        {
-          cancelToken: new axios.CancelToken((c) => (cancel = c)),
-        }
-      )
+      .get(`${currentPageUrl}&genres=${id}&ordering=-metacritic`, {
+        cancelToken: new axios.CancelToken((c) => (cancel = c)),
+      })
       .then((res) => {
         const data = res.data;
         setIsLoading(true);
@@ -51,20 +49,15 @@ export default function SearchResults() {
       .catch((err) => console.log(err));
 
     return () => cancel();
-  }, [query, currentPageUrl]);
+  }, [id, currentPageUrl]);
 
   return (
     <>
       {isLoading ? (
         <Loading />
-      ) : games?.count === 0 ? (
-        <h2>No result for: {query.split("-").join(" ")}</h2>
       ) : (
         <div>
-          <h2>
-            {games.count} {games.count > 1 ? "results" : "result"} found
-          </h2>
-
+          <h2 className="page--heading">{GetGenreName(+id)} Games</h2>
           <GameList games={games} />
           <Pagination
             gotoNextPage={nextPageUrl ? gotoNextPage : null}

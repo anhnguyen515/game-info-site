@@ -37,6 +37,7 @@ export default function PopularGames() {
       })
       .then((res) => {
         const data = res.data;
+        setIsLoading(true);
         setGames(data);
         setNextPageUrl(data.next);
         setPrevPageUrl(data.previous);

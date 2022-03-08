@@ -38,6 +38,50 @@ export const MetacriticStyle = (metacritic) =>
         color: "red",
       };
 
+/*
+  platforms functions 
+*/
+export function GetPlatformName(id) {
+  let name;
+  switch (id) {
+    case 1:
+      name = "PC";
+      break;
+
+    case 2:
+      name = "PlayStation";
+      break;
+
+    case 3:
+      name = "Xbox";
+      break;
+
+    case 4:
+      name = "iOS";
+      break;
+
+    case 8:
+      name = "Android";
+      break;
+
+    case 5:
+      name = "Apple Macintosh";
+      break;
+
+    case 6:
+      name = "Linux";
+      break;
+
+    case 7:
+      name = "Nintendo";
+      break;
+
+    default:
+      break;
+  }
+  return name;
+}
+
 export function GetPlatformIcon(platform) {
   switch (platform) {
     case "PC":
@@ -75,6 +119,76 @@ export function GetPlatformIcon(platform) {
   }
 }
 
+/*
+  genres function
+*/
+export function GetGenreName(id) {
+  switch (id) {
+    case 4:
+      return "Action";
+
+    case 51:
+      return "Indie";
+
+    case 3:
+      return "Adventure";
+
+    case 5:
+      return "RPG";
+
+    case 10:
+      return "Strategy";
+
+    case 2:
+      return "Shooter";
+
+    case 40:
+      return "Casual";
+
+    case 14:
+      return "Simulation";
+
+    case 7:
+      return "Puzzle";
+
+    case 11:
+      return "Arcade";
+
+    case 83:
+      return "Plarformer";
+
+    case 1:
+      return "Racing";
+
+    case 59:
+      return "Massively Multiplayer";
+
+    case 15:
+      return "Sports";
+
+    case 6:
+      return "Fighting";
+
+    case 19:
+      return "Family";
+
+    case 28:
+      return "Board Games";
+
+    case 34:
+      return "Educational";
+
+    case 17:
+      return "Card";
+
+    default:
+      break;
+  }
+}
+
+/*
+  stores function 
+*/
 export function getStoreIcon(storeId) {
   switch (storeId) {
     case 1:
@@ -182,6 +296,9 @@ export function getStoreIcon(storeId) {
   }
 }
 
+/*
+  other functions
+*/
 export function DateFormatter(date) {
   return new Date(date).toLocaleDateString("en-us", {
     year: "numeric",

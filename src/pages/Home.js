@@ -21,6 +21,7 @@ export default function Home() {
         axios.spread((...allData) => {
           const popularGamesData = allData[0].data;
           const metascoreGamesData = allData[1].data;
+          setIsLoading(true);
           setPopularGames(popularGamesData);
           setHighestMetascore(metascoreGamesData);
           setIsLoading(false);
