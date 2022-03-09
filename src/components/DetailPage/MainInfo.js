@@ -1,17 +1,10 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { MetacriticStyle, DateFormatter } from "../../common/utils";
+import { MetacriticStyle, DateFormatter, gotoTop } from "../../common/utils";
 import ReadMore from "../../components/ReadMore";
 
 export default function MainInfo({ game, gameSeries }) {
-  function gotoTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
-    });
-  }
-
   return (
     <>
       <div className="detail--description-container">
@@ -42,7 +35,7 @@ export default function MainInfo({ game, gameSeries }) {
         </Col>
         <Col>
           <h6>Release date</h6>
-          <p>{DateFormatter(game.released)}</p>
+          {game.released && <p>{DateFormatter(game.released)}</p>}
         </Col>
         <Col>
           <h6>Developer</h6>

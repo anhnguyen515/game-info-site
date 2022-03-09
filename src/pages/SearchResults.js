@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Pagination from "../components/Pagination";
 import Loading from "../components/Loading";
 import GameList from "../components/GameList";
+import { gotoTop } from "../common/utils";
 
 export default function SearchResults() {
   const { query } = useParams();
@@ -19,19 +20,13 @@ export default function SearchResults() {
   function gotoNextPage() {
     setCurrentPageUrl(nextPageUrl);
     setCurrentPage((prev) => prev + 1);
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
-    });
+    gotoTop();
   }
 
   function gotoPrevPage() {
     setCurrentPageUrl(prevPageUrl);
     setCurrentPage((prev) => prev - 1);
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
-    });
+    gotoTop();
   }
 
   useEffect(() => {

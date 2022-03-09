@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { GetPlatformIcon } from "../../common/utils";
+import { GetPlatformIcon, gotoTop } from "../../common/utils";
 import { IoMdArrowDropdownCircle } from "react-icons/io";
 
 export default function Navigation({ offcanvas, fixedBottom }) {
@@ -53,6 +53,9 @@ export default function Navigation({ offcanvas, fixedBottom }) {
           <Link to="/">Home</Link>
         </Nav.Item>
         <Nav.Item>
+          <Link to="/new">New Games</Link>
+        </Nav.Item>
+        <Nav.Item>
           <Link to="/games">All Games</Link>
         </Nav.Item>
         <Nav.Item>
@@ -70,6 +73,7 @@ export default function Navigation({ offcanvas, fixedBottom }) {
                     to={`/games/platform/${platform.id}`}
                     key={platform.id}
                     className="dropdown--links"
+                    onClick={gotoTop}
                   >
                     <span className="dropdown--logo">
                       {GetPlatformIcon(platform.name)}
@@ -90,9 +94,10 @@ export default function Navigation({ offcanvas, fixedBottom }) {
               <div>
                 {genres.map((genre) => (
                   <Link
-                    to={`/games/genre/${genre.id}`}
+                    to={`/games/genre/${genre.slug}`}
                     key={genre.id}
                     className="dropdown--links"
+                    onClick={gotoTop}
                   >
                     <span
                       style={{

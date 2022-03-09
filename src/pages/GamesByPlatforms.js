@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 import Loading from "../components/Loading";
 import { useParams } from "react-router-dom";
-import { GetPlatformName } from "../common/utils";
+import { GetPlatformName, gotoTop } from "../common/utils";
 
 export default function GamesByPlatforms() {
   const { id } = useParams();
@@ -20,19 +20,13 @@ export default function GamesByPlatforms() {
   function gotoNextPage() {
     setCurrentPageUrl(nextPageUrl);
     setCurrentPage((prev) => prev + 1);
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
-    });
+    gotoTop();
   }
 
   function gotoPrevPage() {
     setCurrentPageUrl(prevPageUrl);
     setCurrentPage((prev) => prev - 1);
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
-    });
+    gotoTop();
   }
 
   useEffect(() => {

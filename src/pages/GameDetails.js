@@ -8,7 +8,6 @@ import Images from "../components/DetailPage/Images";
 import MainInfo from "../components/DetailPage/MainInfo";
 import Rating from "../components/DetailPage/Rating";
 import Stores from "../components/DetailPage/Stores";
-import Comment from "../components/Comment";
 
 export default function GameDetails() {
   const { slug } = useParams();
@@ -58,7 +57,7 @@ export default function GameDetails() {
                 <Rating game={game} />
                 <MainInfo game={game} gameSeries={gameSeries} />
               </Col>
-              <Col xs={12} lg={5} style={{ padding: "0 50px" }}>
+              <Col xs={12} lg={5}>
                 <Images gameImages={gameImages} />
                 <br />
                 <br />
@@ -67,9 +66,6 @@ export default function GameDetails() {
             </Row>
             <br />
             <hr />
-            <Row>
-              <Comment game={game} />
-            </Row>
           </Container>
           <div
             className="detail--background-image"

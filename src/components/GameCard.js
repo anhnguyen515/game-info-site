@@ -5,6 +5,7 @@ import {
   DateFormatter,
   GetPlatformIcon,
   MetacriticStyle,
+  gotoTop,
 } from "../common/utils";
 import placeholderImg from "../images/RAWGR-logo-white.png";
 
@@ -19,7 +20,7 @@ export default function GameCard({
   esrb_rating,
 }) {
   return (
-    <Link to={`/games/${slug}`} className="card--link">
+    <Link to={`/games/${slug}`} className="card--link" onClick={gotoTop}>
       <Card>
         <Card.Img
           variant="top"

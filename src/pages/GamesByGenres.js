@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 import Loading from "../components/Loading";
 import { useParams } from "react-router-dom";
-import { GetGenreName } from "../common/utils";
+import { gotoTop, slugToName } from "../common/utils";
 
 export default function GamesByGenres() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [games, setGames] = useState(null);
   const [currentPageUrl, setCurrentPageUrl] = useState(
     `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}`
@@ -20,25 +20,19 @@ export default function GamesByGenres() {
   function gotoNextPage() {
     setCurrentPageUrl(nextPageUrl);
     setCurrentPage((prev) => prev + 1);
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
-    });
+    gotoTop();
   }
 
   function gotoPrevPage() {
     setCurrentPageUrl(prevPageUrl);
     setCurrentPage((prev) => prev - 1);
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
-    });
+    gotoTop();
   }
 
   useEffect(() => {
     let cancel;
     axios
-      .get(`${currentPageUrl}&genres=${id}&ordering=-metacritic`, {
+      .get(`${currentPageUrl}&genres=${slug}&ordering=-metacritic`, {
         cancelToken: new axios.CancelToken((c) => (cancel = c)),
       })
       .then((res) => {
@@ -52,7 +46,7 @@ export default function GamesByGenres() {
       .catch((err) => console.log(err));
 
     return () => cancel();
-  }, [id, currentPageUrl]);
+  }, [slug, currentPageUrl]);
 
   return (
     <>
@@ -60,7 +54,7 @@ export default function GamesByGenres() {
         <Loading />
       ) : (
         <div>
-          <h2 className="page--heading">{GetGenreName(+id)} Games</h2>
+          <h2 className="page--heading">{slugToName(slug)}</h2>
           <GameList games={games} />
           <Pagination
             gotoNextPage={nextPageUrl ? gotoNextPage : null}

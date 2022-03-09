@@ -120,73 +120,6 @@ export function GetPlatformIcon(platform) {
 }
 
 /*
-  genres function
-*/
-export function GetGenreName(id) {
-  switch (id) {
-    case 4:
-      return "Action";
-
-    case 51:
-      return "Indie";
-
-    case 3:
-      return "Adventure";
-
-    case 5:
-      return "RPG";
-
-    case 10:
-      return "Strategy";
-
-    case 2:
-      return "Shooter";
-
-    case 40:
-      return "Casual";
-
-    case 14:
-      return "Simulation";
-
-    case 7:
-      return "Puzzle";
-
-    case 11:
-      return "Arcade";
-
-    case 83:
-      return "Plarformer";
-
-    case 1:
-      return "Racing";
-
-    case 59:
-      return "Massively Multiplayer";
-
-    case 15:
-      return "Sports";
-
-    case 6:
-      return "Fighting";
-
-    case 19:
-      return "Family";
-
-    case 28:
-      return "Board Games";
-
-    case 34:
-      return "Educational";
-
-    case 17:
-      return "Card";
-
-    default:
-      break;
-  }
-}
-
-/*
   stores function 
 */
 export function getStoreIcon(storeId) {
@@ -299,6 +232,13 @@ export function getStoreIcon(storeId) {
 /*
   other functions
 */
+export function convertToTwoDigits(digit) {
+  if (digit.toString().length < 2) {
+    digit = "0" + digit.toString();
+  }
+  return digit;
+}
+
 export function DateFormatter(date) {
   return new Date(date).toLocaleDateString("en-us", {
     year: "numeric",
@@ -318,8 +258,22 @@ export function UpperCaseFirstLetter(string) {
   return string[0].toUpperCase() + string.substring(1);
 }
 
+export function slugToName(slug) {
+  return slug
+    .split("-")
+    .map((word) => UpperCaseFirstLetter(word))
+    .join(" ");
+}
+
 export function OverallRatingColor(rating) {
   if (rating >= 4) return "chartreuse";
   else if (rating >= 2 && rating < 4) return "yellow";
   return "red";
+}
+
+export function gotoTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "auto",
+  });
 }

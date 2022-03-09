@@ -9,7 +9,9 @@ export default function DetailHeader({ game }) {
   return (
     <>
       <div className="detail--date-platform">
-        <span className="detail--date">{DateFormatter(game.released)}</span>
+        {game.released && (
+          <span className="detail--date">{DateFormatter(game.released)}</span>
+        )}
         <span className="detail--platform">
           {game.parent_platforms.map((item, index) => (
             <span key={index}>{GetPlatformIcon(item.platform.name)}</span>
@@ -20,15 +22,17 @@ export default function DetailHeader({ game }) {
       <div className="detail--score-container">
         <div className="detail--score">
           <h3>Overall:</h3>
-          <h3
-            className="detail--overall-rating"
-            style={{
-              borderColor: OverallRatingColor(game.rating),
-              color: OverallRatingColor(game.rating),
-            }}
-          >
-            {game.rating}
-          </h3>
+          {game.rating_top !== 0 && (
+            <h3
+              className="detail--overall-rating"
+              style={{
+                borderColor: OverallRatingColor(game.rating),
+                color: OverallRatingColor(game.rating),
+              }}
+            >
+              {game.rating}
+            </h3>
+          )}
           <h4>/5</h4>
         </div>
         <p>{game.reviews_count} RATINGS</p>

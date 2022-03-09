@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 import Loading from "../components/Loading";
+import { gotoTop } from "../common/utils";
 
 export default function PopularGames() {
   const [games, setGames] = useState(null);
@@ -17,25 +18,19 @@ export default function PopularGames() {
   function gotoNextPage() {
     setCurrentPageUrl(nextPageUrl);
     setCurrentPage((prev) => prev + 1);
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
-    });
+    gotoTop();
   }
 
   function gotoPrevPage() {
     setCurrentPageUrl(prevPageUrl);
     setCurrentPage((prev) => prev - 1);
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
-    });
+    gotoTop();
   }
 
   useEffect(() => {
     let cancel;
     axios
-      .get(`${currentPageUrl}&ordering=-popular`, {
+      .get(`${currentPageUrl}`, {
         cancelToken: new axios.CancelToken((c) => (cancel = c)),
       })
       .then((res) => {

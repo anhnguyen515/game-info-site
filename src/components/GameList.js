@@ -4,7 +4,7 @@ import GameCard from "./GameCard";
 
 export default function GameList({ games }) {
   return (
-    <Row xs={1} sm={2} xl={4} style={{ margin: "20px 0 150px" }}>
+    <Row xs={1} sm={2} xl={4} style={{ marginBottom: "120px" }}>
       {games.results.map((game) => (
         <Col key={game.id} className="card--col">
           <GameCard

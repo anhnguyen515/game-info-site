@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import Pagination from "../components/Pagination";
 import Loading from "../components/Loading";
+import { gotoTop } from "../common/utils";
 
 export default function AllGames() {
   const [games, setGames] = useState(null);
@@ -32,19 +33,13 @@ export default function AllGames() {
   function gotoNextPage() {
     setCurrentPageUrl(nextPageUrl);
     setCurrentPage((prev) => prev + 1);
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
-    });
+    gotoTop();
   }
 
   function gotoPrevPage() {
     setCurrentPageUrl(prevPageUrl);
     setCurrentPage((prev) => prev - 1);
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
-    });
+    gotoTop();
   }
 
   useEffect(() => {

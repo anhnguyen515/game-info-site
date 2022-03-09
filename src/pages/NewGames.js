@@ -3,9 +3,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Pagination from "../components/Pagination";
 import Loading from "../components/Loading";
-import { gotoTop } from "../common/utils";
+import { convertToTwoDigits, gotoTop } from "../common/utils";
 
-export default function MetascoreGames() {
+export default function NewGames() {
   const [games, setGames] = useState(null);
   const [currentPageUrl, setCurrentPageUrl] = useState(
     `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}&page_size=12`
@@ -14,6 +14,13 @@ export default function MetascoreGames() {
   const [nextPageUrl, setNextPageUrl] = useState(null);
   const [prevPageUrl, setPrevPageUrl] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = convertToTwoDigits(date.getMonth() + 1);
+  const day = convertToTwoDigits(date.getDate());
+  const today = year + "-" + month + "-" + day;
+  const nextYear = year + 1 + "-" + month + "-" + day;
 
   function gotoNextPage() {
     setCurrentPageUrl(nextPageUrl);
@@ -30,7 +37,7 @@ export default function MetascoreGames() {
   useEffect(() => {
     let cancel;
     axios
-      .get(`${currentPageUrl}&ordering=-metacritic`, {
+      .get(`${currentPageUrl}&dates=${today},${nextYear}`, {
         cancelToken: new axios.CancelToken((c) => (cancel = c)),
       })
       .then((res) => {
@@ -44,11 +51,11 @@ export default function MetascoreGames() {
       .catch((err) => console.log(err));
 
     return () => cancel();
-  }, [currentPageUrl]);
+  }, [currentPageUrl, today, nextYear]);
 
   return (
     <>
-      <h2 className="page--heading">Highest Metascore Games</h2>
+      <h2 className="page--heading">New & Upcoming Games</h2>
       {isLoading ? (
         <Loading />
       ) : (
