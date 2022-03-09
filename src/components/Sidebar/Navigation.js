@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Image, Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { GetPlatformIcon } from "../../common/utils";
 import { IoMdArrowDropdownCircle } from "react-icons/io";
@@ -94,6 +94,18 @@ export default function Navigation({ offcanvas, fixedBottom }) {
                     key={genre.id}
                     className="dropdown--links"
                   >
+                    <span
+                      style={{
+                        display: "inline-block",
+                        backgroundImage: `url(${genre.image_background})`,
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                        borderRadius: "5px",
+                        width: 35,
+                        height: 35,
+                      }}
+                    ></span>
                     {genre.name}
                   </Link>
                 ))}

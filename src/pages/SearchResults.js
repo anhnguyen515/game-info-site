@@ -11,12 +11,14 @@ export default function SearchResults() {
   const [currentPageUrl, setCurrentPageUrl] = useState(
     `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}`
   );
+  const [currentPage, setCurrentPage] = useState(1);
   const [nextPageUrl, setNextPageUrl] = useState(null);
   const [prevPageUrl, setPrevPageUrl] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   function gotoNextPage() {
     setCurrentPageUrl(nextPageUrl);
+    setCurrentPage((prev) => prev + 1);
     window.scrollTo({
       top: 0,
       behavior: "auto",
@@ -25,6 +27,7 @@ export default function SearchResults() {
 
   function gotoPrevPage() {
     setCurrentPageUrl(prevPageUrl);
+    setCurrentPage((prev) => prev - 1);
     window.scrollTo({
       top: 0,
       behavior: "auto",
@@ -58,7 +61,7 @@ export default function SearchResults() {
       {isLoading ? (
         <Loading />
       ) : games?.count === 0 ? (
-        <h2>No result for: {query.split("-").join(" ")}</h2>
+        <h2>No result for: {query.replaceAll("-", " ")}</h2>
       ) : (
         <div>
           <h2>
@@ -66,9 +69,11 @@ export default function SearchResults() {
           </h2>
 
           <GameList games={games} />
+          <hr />
           <Pagination
             gotoNextPage={nextPageUrl ? gotoNextPage : null}
             gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
+            currentPage={currentPage}
           />
         </div>
       )}

@@ -24,7 +24,7 @@ export default function Searchbar() {
       return;
     } else {
       if (event.key === "Enter") {
-        navigate(`/search/${search.split(" ").join("-")}`);
+        navigate(`/search/${search.replaceAll(" ", "-")}`);
         setSearch("");
       }
     }

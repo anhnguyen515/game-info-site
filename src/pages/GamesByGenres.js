@@ -12,12 +12,14 @@ export default function GamesByGenres() {
   const [currentPageUrl, setCurrentPageUrl] = useState(
     `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}`
   );
+  const [currentPage, setCurrentPage] = useState(1);
   const [nextPageUrl, setNextPageUrl] = useState(null);
   const [prevPageUrl, setPrevPageUrl] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   function gotoNextPage() {
     setCurrentPageUrl(nextPageUrl);
+    setCurrentPage((prev) => prev + 1);
     window.scrollTo({
       top: 0,
       behavior: "auto",
@@ -26,6 +28,7 @@ export default function GamesByGenres() {
 
   function gotoPrevPage() {
     setCurrentPageUrl(prevPageUrl);
+    setCurrentPage((prev) => prev - 1);
     window.scrollTo({
       top: 0,
       behavior: "auto",
@@ -62,6 +65,7 @@ export default function GamesByGenres() {
           <Pagination
             gotoNextPage={nextPageUrl ? gotoNextPage : null}
             gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
+            currentPage={currentPage}
           />
         </div>
       )}
