@@ -1,13 +1,10 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { GetPlatformIcon, gotoTop } from "../../common/utils";
 import { IoMdArrowDropdownCircle } from "react-icons/io";
 
-export default function Navigation({ offcanvas, fixedBottom }) {
-  const [platforms, setPlatforms] = useState([]);
-  const [genres, setGenres] = useState([]);
+export default function Navigation({ ...props }) {
   const [togglePlatforms, setTogglePlatforms] = useState(false);
   const [toggleGenres, setToggleGenres] = useState(false);
 
@@ -19,47 +16,32 @@ export default function Navigation({ offcanvas, fixedBottom }) {
     setToggleGenres((prevState) => !prevState);
   }
 
-  function fetchData() {
-    const platforms = `${process.env.REACT_APP_API_URL}/platforms/lists/parents?key=${process.env.REACT_APP_API_KEY}&page_size=8`;
-    const genres = `${process.env.REACT_APP_API_URL}/genres?key=${process.env.REACT_APP_API_KEY}`;
-
-    const getPlatforms = axios.get(platforms);
-    const getGenres = axios.get(genres);
-    axios
-      .all([getPlatforms, getGenres])
-      .then(
-        axios.spread((...allData) => {
-          const platformsData = allData[0].data.results;
-          const genresData = allData[1].data.results;
-          setPlatforms(platformsData);
-          setGenres(genresData);
-        })
-      )
-      .catch((err) => console.log(err));
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <Navbar
       variant="dark"
-      className={!offcanvas && "sidebar"}
-      fixed={fixedBottom && "bottom"}
+      className={!props.offcanvas && "sidebar"}
+      fixed={props.fixedBottom && "bottom"}
     >
       <Nav className="flex-column sidebar--nav">
         <Nav.Item>
-          <Link to="/">Home</Link>
+          <Link to="/" onClick={gotoTop}>
+            Home
+          </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/new">New Games</Link>
+          <Link to="/new" onClick={gotoTop}>
+            New Games
+          </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/games">All Games</Link>
+          <Link to="/games" onClick={gotoTop}>
+            All Games
+          </Link>
         </Nav.Item>
         <Nav.Item>
-          <Link to="/popular">Popular Games</Link>
+          <Link to="/popular" onClick={gotoTop}>
+            Popular Games
+          </Link>
         </Nav.Item>
         <Nav.Item>
           <span onClick={handleTogglePlatforms} style={{ cursor: "pointer" }}>
@@ -68,7 +50,7 @@ export default function Navigation({ offcanvas, fixedBottom }) {
           <div>
             {togglePlatforms && (
               <div>
-                {platforms.map((platform) => (
+                {props.platforms.slice(0, 8).map((platform) => (
                   <Link
                     to={`/games/platform/${platform.id}`}
                     key={platform.id}
@@ -92,7 +74,7 @@ export default function Navigation({ offcanvas, fixedBottom }) {
           <div>
             {toggleGenres && (
               <div>
-                {genres.map((genre) => (
+                {props.genres.slice(0, 8).map((genre) => (
                   <Link
                     to={`/games/genre/${genre.slug}`}
                     key={genre.id}

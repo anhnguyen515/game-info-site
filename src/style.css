@@ -170,7 +170,7 @@ a:hover {
 .card:hover {
   position: absolute;
   width: calc(100% - 20px);
-  transform: scale(1.01);
+  transform: scale(1.1);
   z-index: 1;
 }
 
@@ -239,6 +239,30 @@ a:hover {
 
 .card--link:hover {
   color: white;
+}
+
+/* ===== SMALL CARD ====== */
+.card--small {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.card--small > * {
+  flex-basis: 100%;
+}
+
+.card--small h5 {
+  font-size: 1rem;
+}
+
+.card--small-img {
+  aspect-ratio: 4/3;
+  flex-basis: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* ===== FORM ===== */
@@ -424,4 +448,71 @@ a:hover {
   color: white;
   text-decoration: underline;
   text-underline-position: under;
+}
+
+/* ===== FOOTER ===== */
+.footer--container {
+  max-width: 90%;
+  margin: 100px auto 0;
+}
+
+.footer--container > * {
+  margin: 30px 0 70px;
+}
+
+.footer--heading {
+  display: inline-block;
+  background-color: white;
+  color: #151515;
+  font-size: 1.25rem;
+  padding: 5px 10px;
+  margin: 0 0 0 13px;
+  width: auto;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.footer--heading::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  right: 0;
+  bottom: -1px;
+  height: 36px;
+  background-color: white;
+  transform: skewX(-11deg);
+  z-index: -1;
+}
+
+.footer--heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: -10px;
+  bottom: -1px;
+  height: 36px;
+  background-color: white;
+  transform: skewX(-11deg);
+  z-index: -1;
+}
+
+.footer--link-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 20px;
+}
+
+.footer--link {
+  background-color: #282828;
+  border-radius: 20px;
+  color: #aaaaaa;
+  padding: 3px 12px;
+  transition: 0.2s;
+}
+
+.footer--link:hover {
+  background-color: white;
+  color: #151515;
+  transform: scale(1.1);
 }

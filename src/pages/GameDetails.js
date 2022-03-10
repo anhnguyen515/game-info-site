@@ -64,8 +64,6 @@ export default function GameDetails() {
                 <Stores gameStores={gameStores} />
               </Col>
             </Row>
-            <br />
-            <hr />
           </Container>
           <div
             className="detail--background-image"

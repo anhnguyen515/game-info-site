@@ -76,6 +76,30 @@ export function GetPlatformName(id) {
       name = "Nintendo";
       break;
 
+    case 9:
+      name = "Atari";
+      break;
+
+    case 10:
+      name = "Commodore / Amiga";
+      break;
+
+    case 11:
+      name = "SEGA";
+      break;
+
+    case 12:
+      name = "3DO";
+      break;
+
+    case 13:
+      name = "Neo Geo";
+      break;
+
+    case 14:
+      name = "Web";
+      break;
+
     default:
       break;
   }

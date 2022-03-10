@@ -12,7 +12,9 @@ export default function Home() {
 
   const date = new Date();
   const year = date.getFullYear();
-  const month = convertToTwoDigits(date.getMonth() + 1);
+  const month = convertToTwoDigits(
+    date.getMonth() !== 0 ? date.getMonth() : date.getMonth() + 1
+  );
   const day = convertToTwoDigits(date.getDate());
   const today = year + "-" + month + "-" + day;
   const nextYear = year + 1 + "-" + month + "-" + day;
@@ -50,7 +52,7 @@ export default function Home() {
           <GameList games={newGames} />
 
           <h2 className="page--heading">
-            <Link to="/metascore">Highest Metascore</Link>
+            <Link to="/metascore">High Metascore Games</Link>
           </h2>
           <GameList games={highestMetascore} />
         </div>

@@ -14,10 +14,24 @@ import GamesByPlatforms from "./pages/GamesByPlatforms";
 import GamesByGenres from "./pages/GamesByGenres";
 import NewGames from "./pages/NewGames";
 import Footer from "./components/Footer";
+import axios from "axios";
+import { convertToTwoDigits } from "./common/utils";
 
 export default function App() {
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 992;
+  const [newGames, setNewGames] = useState([]);
+  const [platforms, setPlatforms] = useState([]);
+  const [genres, setGenres] = useState([]);
+
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = convertToTwoDigits(
+    date.getMonth() !== 0 ? date.getMonth() : date.getMonth() + 1
+  );
+  const day = convertToTwoDigits(date.getDate());
+  const today = year + "-" + month + "-" + day;
+  const nextYear = year + 1 + "-" + month + "-" + day;
 
   useEffect(() => {
     function handleResize() {
@@ -30,6 +44,29 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const newGames = `${process.env.REACT_APP_API_URL}/games?key=${process.env.REACT_APP_API_KEY}&dates=${today},${nextYear}&page_size=4`;
+    const platforms = `${process.env.REACT_APP_API_URL}/platforms/lists/parents?key=${process.env.REACT_APP_API_KEY}`;
+    const genres = `${process.env.REACT_APP_API_URL}/genres?key=${process.env.REACT_APP_API_KEY}`;
+
+    const getNewGames = axios.get(newGames);
+    const getPlatforms = axios.get(platforms);
+    const getGenres = axios.get(genres);
+    axios
+      .all([getNewGames, getPlatforms, getGenres])
+      .then(
+        axios.spread((...allData) => {
+          const newGamesData = allData[0].data.results;
+          const platformsData = allData[1].data.results;
+          const genresData = allData[2].data.results;
+          setNewGames(newGamesData);
+          setPlatforms(platformsData);
+          setGenres(genresData);
+        })
+      )
+      .catch((err) => console.log(err));
+  }, [today, nextYear]);
+
   return (
     <>
       <Router>
@@ -37,7 +74,11 @@ export default function App() {
         <Container fluid style={{ padding: "10px 40px" }}>
           <Row>
             <Col xs="auto" lg={3} xl={2}>
-              {width >= breakpoint ? <Sidebar /> : <OffcanvasSidebar />}
+              {width >= breakpoint ? (
+                <Sidebar platforms={platforms} genres={genres} />
+              ) : (
+                <OffcanvasSidebar platforms={platforms} genres={genres} />
+              )}
             </Col>
             <Col lg={9} xl={10}>
               <Routes>
@@ -65,7 +106,7 @@ export default function App() {
             </Col>
           </Row>
         </Container>
-        <Footer />
+        <Footer games={newGames} platforms={platforms} genres={genres} />
       </Router>
     </>
   );

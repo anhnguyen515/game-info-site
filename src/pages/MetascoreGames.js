@@ -48,7 +48,7 @@ export default function MetascoreGames() {
 
   return (
     <>
-      <h2 className="page--heading">Highest Metascore Games</h2>
+      <h2 className="page--heading">High Metascore Games</h2>
       {isLoading ? (
         <Loading />
       ) : (
