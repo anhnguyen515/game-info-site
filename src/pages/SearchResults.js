@@ -51,6 +51,10 @@ export default function SearchResults() {
     return () => cancel();
   }, [query, currentPageUrl]);
 
+  useEffect(() => {
+    document.title = "Search";
+  }, []);
+
   return (
     <>
       {isLoading ? (
@@ -64,7 +68,6 @@ export default function SearchResults() {
           </h2>
 
           <GameList games={games} />
-          <hr />
           <Pagination
             gotoNextPage={nextPageUrl ? gotoNextPage : null}
             gotoPrevPage={prevPageUrl ? gotoPrevPage : null}

@@ -48,6 +48,10 @@ export default function GamesByGenres() {
     return () => cancel();
   }, [slug, currentPageUrl]);
 
+  useEffect(() => {
+    document.title = `${slugToName(slug)}`;
+  }, [slug]);
+
   return (
     <>
       {isLoading ? (

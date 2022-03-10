@@ -46,6 +46,10 @@ export default function MetascoreGames() {
     return () => cancel();
   }, [currentPageUrl]);
 
+  useEffect(() => {
+    document.title = "High Metascore Games";
+  }, []);
+
   return (
     <>
       <h2 className="page--heading">High Metascore Games</h2>

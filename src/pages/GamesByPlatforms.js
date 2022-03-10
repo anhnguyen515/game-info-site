@@ -48,6 +48,10 @@ export default function GamesByPlatforms() {
     return () => cancel();
   }, [id, currentPageUrl]);
 
+  useEffect(() => {
+    document.title = `Games for ${GetPlatformName(+id)}`;
+  }, [id]);
+
   return (
     <>
       <h2 className="page--heading">Games for {GetPlatformName(+id)}</h2>

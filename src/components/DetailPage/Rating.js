@@ -5,7 +5,12 @@ import { Badge, ProgressBar } from "react-bootstrap";
 export default function Rating({ game }) {
   return (
     <>
-      <ProgressBar style={{ height: 50 }}>
+      <ProgressBar
+        style={{
+          height: 50,
+          border: "1px solid rgba(0, 0, 0, 0.3)",
+        }}
+      >
         {game.ratings.map((rating) => (
           <ProgressBar
             key={rating.id}

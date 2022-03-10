@@ -40,6 +40,10 @@ export default function Home() {
       .catch((err) => console.log(err));
   }, [today, nextYear]);
 
+  useEffect(() => {
+    document.title = "RAWGR";
+  }, []);
+
   return (
     <>
       {isLoading ? (

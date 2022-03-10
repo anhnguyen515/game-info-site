@@ -66,6 +66,10 @@ export default function AllGames() {
     return () => cancel();
   }, [order, currentPageUrl]);
 
+  useEffect(() => {
+    document.title = "All Games";
+  }, []);
+
   return (
     <>
       <h2 className="page--heading">All Games</h2>

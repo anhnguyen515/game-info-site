@@ -55,6 +55,10 @@ export default function NewGames() {
     return () => cancel();
   }, [currentPageUrl, today, nextYear]);
 
+  useEffect(() => {
+    document.title = "New & Upcoming Games";
+  }, []);
+
   return (
     <>
       <h2 className="page--heading">New & Upcoming Games</h2>

@@ -46,6 +46,11 @@ export default function GameDetails() {
       )
       .catch((err) => console.log(err));
   }, [slug]);
+
+  useEffect(() => {
+    document.title = `${game?.name}`;
+  }, [game]);
+
   return (
     <>
       {!isLoading ? (

@@ -17,12 +17,14 @@ export default function Images({ gameImages }) {
       <Row {...layout}>
         {gameImages.map((image) => (
           <Col key={image.id} className="detail--screenshot-container">
-            <div
-              className="detail--screenshot"
-              style={{
-                backgroundImage: `url(${image.image})`,
-              }}
-            ></div>
+            <a href={image.image} target="_blank" rel="noreferrer">
+              <div
+                className="detail--screenshot"
+                style={{
+                  backgroundImage: `url(${image.image})`,
+                }}
+              ></div>
+            </a>
           </Col>
         ))}
       </Row>

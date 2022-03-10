@@ -46,6 +46,10 @@ export default function PopularGames() {
     return () => cancel();
   }, [currentPageUrl]);
 
+  useEffect(() => {
+    document.title = "Popular Games";
+  }, []);
+
   return (
     <>
       <h2 className="page--heading">Popular Games</h2>
