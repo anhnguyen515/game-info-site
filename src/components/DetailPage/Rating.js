@@ -8,7 +8,6 @@ export default function Rating({ game }) {
       <ProgressBar
         style={{
           height: 50,
-          border: "1px solid rgba(0, 0, 0, 0.3)",
         }}
       >
         {game.ratings.map((rating) => (
