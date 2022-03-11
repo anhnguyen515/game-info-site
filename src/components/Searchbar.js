@@ -14,7 +14,7 @@ export default function Searchbar() {
     if (search === "") {
       return;
     } else {
-      navigate(`/search/${search.split(" ").join("-")}`);
+      navigate(`/search/${search.replaceAll(" ", "-")}`);
       setSearch("");
     }
   }

@@ -11,7 +11,7 @@ export default function MyNavbar() {
         <Navbar variant="dark" expand="lg">
           <Navbar.Brand>
             <Link to="/">
-              <img src={logo} alt="rawgr" width="100px" />
+              <img src={logo} alt="rawgr logo" width="150px" />
             </Link>
           </Navbar.Brand>
           <Searchbar />

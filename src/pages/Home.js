@@ -25,8 +25,12 @@ export default function Home() {
 
     const getNewGames = axios.get(newGames);
     const getMetascore = axios.get(metascore);
+
+    let cancel;
     axios
-      .all([getNewGames, getMetascore])
+      .all([getNewGames, getMetascore], {
+        cancelToken: new axios.CancelToken((c) => (cancel = c)),
+      })
       .then(
         axios.spread((...allData) => {
           const newGamesData = allData[0].data;
@@ -38,6 +42,8 @@ export default function Home() {
         })
       )
       .catch((err) => console.log(err));
+
+    return () => cancel();
   }, [today, nextYear]);
 
   useEffect(() => {
