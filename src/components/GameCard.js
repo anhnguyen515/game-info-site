@@ -18,7 +18,7 @@ export default function GameCard({ ...props }) {
           src={props.img ? props.img : placeholderImg}
           alt="game thumbnail"
         />
-        <Card.Body>
+        <Card.Body style={{ borderTop: "1px solid #3e3e3e" }}>
           <Card.Text>
             <span className="card--platforms">
               {props.platforms?.map((item, index) => (
@@ -37,18 +37,18 @@ export default function GameCard({ ...props }) {
           <div className="card--side-info">
             <p>
               <span className="card--info-name">Release date:</span>
-              {DateFormatter(props.released)}
+              {props.released ? DateFormatter(props.released) : "Not Updated"}
             </p>
             <p>
               <span className="card--info-name">Genres:</span>
-              {props.genres.map((genre) => genre.name).join(", ")}
+              {props.genres.length !== 0
+                ? props.genres.map((genre) => genre.name).join(", ")
+                : "Not Updated"}
             </p>
-            {props.esrb_rating && (
-              <p>
-                <span className="card--info-name">ESRB:</span>
-                {props.esrb_rating.name}
-              </p>
-            )}
+            <p>
+              <span className="card--info-name">ESRB:</span>
+              {props.esrb_rating ? props.esrb_rating.name : "Rating Pending"}
+            </p>
           </div>
         </Card.Body>
       </Card>

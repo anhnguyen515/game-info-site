@@ -28,8 +28,11 @@ export default function GameDetails() {
     const getImages = axios.get(images);
     const getStores = axios.get(stores);
 
+    let cancel;
     axios
-      .all([getGame, getSeries, getImages, getStores])
+      .all([getGame, getSeries, getImages, getStores], {
+        cancelToken: new axios.CancelToken((c) => (cancel = c)),
+      })
       .then(
         axios.spread((...allData) => {
           const gameData = allData[0].data;
@@ -45,6 +48,8 @@ export default function GameDetails() {
         })
       )
       .catch((err) => console.log(err));
+
+    return () => cancel();
   }, [slug]);
 
   useEffect(() => {

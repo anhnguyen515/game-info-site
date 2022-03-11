@@ -49,20 +49,19 @@ export default function MainInfo({ game, gameSeries }) {
           <h6>ESRB rating</h6>
           <p>{game.esrb_rating?.name}</p>
         </Col>
-        {gameSeries && (
-          <Col xs={12}>
-            <h6>Other games in the series</h6>
-            <div className="detail--game-series">
-              {gameSeries.map((game) => (
-                <div key={game.id}>
-                  <Link to={`/games/${game.slug}`} onClick={gotoTop}>
-                    {game.name}
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </Col>
-        )}
+        <Col xs={12}>
+          <h6>Other games in the series</h6>
+          <div className="detail--game-series">
+            {gameSeries.map((game) => (
+              <div key={game.id}>
+                <Link to={`/games/${game.slug}`} onClick={gotoTop}>
+                  {game.name}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </Col>
+
         <Col xs={12}>
           <h6>Tags</h6>
           <p>{game.tags.map((tag) => tag.name).join(", ")}</p>

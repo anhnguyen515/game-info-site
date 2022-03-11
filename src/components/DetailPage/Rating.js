@@ -19,6 +19,7 @@ export default function Rating({ game }) {
           />
         ))}
       </ProgressBar>
+
       <div className="detail--graph-description">
         {game.ratings.map((rating) => (
           <span key={rating.id} className="detail--badge-container">

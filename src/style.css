@@ -32,14 +32,12 @@ a:hover {
 
 /* ===== NAVBAR ===== */
 .navbar {
-  padding: 24px 40px;
+  padding: 24px;
   gap: 20px;
 }
 
 .navbar-brand {
-  font-size: 18px;
-  letter-spacing: 0.25rem;
-  font-weight: bold;
+  padding: 0;
 }
 
 .nav--search-container {
@@ -64,33 +62,10 @@ a:hover {
 }
 
 .nav--search:hover .nav--searchBar,
+.nav--search:hover .nav--searchBar::placeholder,
 .nav--searchBar:focus {
   color: #151515;
   outline: none;
-}
-
-.nav--search-result {
-  background-color: black;
-  border-radius: 10px;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  padding: 20px;
-  width: 100%;
-  z-index: 2;
-}
-
-.nav--search-card {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin: 10px;
-}
-
-.nav--search-see_all {
-  font-size: 24px;
-  text-align: center;
-  width: 100%;
 }
 
 .nav--searchIcon {
@@ -105,17 +80,20 @@ a:hover {
   flex: 1;
 }
 
+.nav--searchBar:focus::placeholder {
+  color: rgba(21, 21, 21, 0.8);
+}
+
+.nav--searchBar::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
 /* ===== SIDEBAR ===== */
 .sidebar,
 .offcanvas {
   font-weight: bold;
   padding: 0;
   width: auto;
-}
-
-.sidebar {
-  position: sticky;
-  top: 10px;
 }
 
 .offcanvas {
@@ -135,7 +113,6 @@ a:hover {
   font-size: 1rem;
   font-weight: normal;
   padding: 10px 0;
-  margin-left: 5px;
 }
 
 .dropdown--logo {
@@ -196,6 +173,10 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.card--platforms {
+  min-height: 30px;
 }
 
 .card--platforms > span {
@@ -268,7 +249,10 @@ a:hover {
 /* ===== FORM ===== */
 .form--section {
   display: flex;
-  gap: 50px;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin: 10px 0;
 }
 
 .form--group {
