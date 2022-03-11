@@ -1,1 +1,1 @@
-# RAWG based Front-end for a video games review website
+# RAWG based FE for a games review website
