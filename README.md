@@ -1,1 +1,1 @@
-# RAWG based FE for a games review website
+# RAWG Front-end clone
