@@ -17,9 +17,7 @@ export default function NewGames() {
 
   const date = new Date();
   const year = date.getFullYear();
-  const month = convertToTwoDigits(
-    date.getMonth() !== 0 ? date.getMonth() : date.getMonth() + 1
-  );
+  const month = convertToTwoDigits(date.getMonth() + 1);
   const day = convertToTwoDigits(date.getDate());
   const today = year + "-" + month + "-" + day;
   const nextYear = year + 1 + "-" + month + "-" + day;
