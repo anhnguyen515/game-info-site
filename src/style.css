@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  font-size: calc(13px + (18 - 13) * ((100vw - 300px) / (1600 - 300)));
 }
 
 *,
@@ -14,7 +15,6 @@ body {
   color: #ffffff;
   background-color: #151515;
   font-family: "Roboto", sans-serif;
-  font-size: calc(13px + (16 - 13) * ((100vw - 300px) / (1600 - 300)));
 }
 
 a {
@@ -27,7 +27,7 @@ a:hover {
 }
 
 .page--heading {
-  font-size: calc(32px + (64 - 32) * ((100vw - 300px) / (1600 - 300)));
+  font-size: 4rem;
 }
 
 /* ===== NAVBAR ===== */
@@ -103,7 +103,7 @@ a:hover {
 
 .sidebar--nav > * {
   padding: 10px 0;
-  font-size: calc(14px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
+  font-size: 1.5rem;
 }
 
 .dropdown--links {
@@ -375,7 +375,7 @@ a:hover {
 
 .detail--specs-container h6 {
   opacity: 0.3;
-  font-size: calc(13px + (16 - 13) * ((100vw - 300px) / (1600 - 300)));
+  font-size: 1rem;
 }
 
 .detail--metascore {
@@ -449,7 +449,7 @@ a:hover {
   background-color: white;
   color: #151515;
   font-size: 1.25rem;
-  padding: 5px 10px;
+  padding: 0.28rem 0.5rem;
   margin: 0 0 0 13px;
   width: auto;
   position: relative;
@@ -462,7 +462,7 @@ a:hover {
   left: -10px;
   right: 0;
   bottom: -1px;
-  height: 36px;
+  height: 2.2rem;
   background-color: white;
   transform: skewX(-11deg);
   z-index: -1;
@@ -474,7 +474,7 @@ a:hover {
   left: 0;
   right: -10px;
   bottom: -1px;
-  height: 36px;
+  height: 2.2rem;
   background-color: white;
   transform: skewX(-11deg);
   z-index: -1;

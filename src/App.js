@@ -71,7 +71,7 @@ export default function App() {
     <>
       <Router>
         <MyNavbar />
-        <Container fluid style={{ padding: "10px 40px" }}>
+        <Container fluid style={{ padding: ".5rem 2.2rem" }}>
           <Row>
             <Col xs="auto" lg={3} xl={2}>
               {width >= breakpoint ? (
